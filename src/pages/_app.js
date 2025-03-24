@@ -1,5 +1,5 @@
 import Head from "next/head";
-import "@/styles/globals.css";
+import "src/styles/globals.css";
 import { Montserrat } from "next/font/google";
 import { Noto_Sans_JP } from "next/font/google";
 
