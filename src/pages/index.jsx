@@ -1,3 +1,5 @@
+import CommonLayout from "src/compornents/CommonLayout";
+import MainLayout from "src/compornents/MainLayout";
 import Meta from "src/compornents/Meta";
 
 
@@ -5,8 +7,9 @@ export default function Home() {
   return (
     <>
     <Meta description="独学のフロントエンド開発・Web制作者Ariのポートフォリオサイトです。" />
+    <CommonLayout>
+      <MainLayout>
     <div>
-      <main className="flex flex-col gap-8 row-start-2 items-center bg-bg_white relative z-0 mt-8">
         <h1 className="font-mont font-bold text-4xl sm:text-6xl md:text-7xl">設定中</h1>
         <a href="#" className="btn-base">HTML</a>
         <div className="card-base relative">
@@ -15,8 +18,9 @@ export default function Home() {
         <p className="title-large-blue">2024-現在 | 岩手県</p>
         <p>はじめまして。</p>
         </div>
-      </main>
     </div>
+      </MainLayout>
+    </CommonLayout>
     </>
   );
 }
