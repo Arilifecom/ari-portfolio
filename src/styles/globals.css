@@ -19,4 +19,73 @@
   .card-base {
     @apply px-7 bg-bg_white rounded-22 border-2 border-solid border-dark pt-5
   }
+
 }
+
+@layer utilities {
+
+  .nav-style {
+    @apply gap-1 grid grid-cols-10 grid-rows-2 w-[100vw]  border-b-2 border-dark  text-center z-0 pr-4
+  }
+  
+  .nav-style-md {
+    @apply grid-cols-6 w-[80vw] border-b-0 gap-2
+  }
+
+  .li-main-style {
+    @apply relative col-start-1 col-end-5 row-start-1 row-end-3 grid items-center text-2xl font-bold border-2 border-b-0 rounded-t-[33px] py-1
+  }
+
+  .li-main-style-md {
+    @apply col-start-1 col-end-4 row-start-1 row-end-3 text-5xl border-4 border-b-0 rounded-t-[42px] py-8
+  }
+
+  .li-main-style-line {
+    @apply absolute top-2 -right-3 border-2 border-[#5B5959] w-[100%] h-full rounded-t-[33px] bg-[#C6C4C7] -z-[1]
+  }
+
+  .li-main-style-line-md {
+    @apply top-3 -right-4 border-4 rounded-t-[42px]
+  }
+
+  .li-child1-style {
+    @apply relative col-start-5 col-end-7 row-start-2 row-end-3 grid items-center text-sm border-2 border-b-0 rounded-t-22 py-1
+  }
+
+  .li-child1-style-md {
+    @apply col-start-4 col-end-5 row-start-2 text-xl border-4 border-b-0 font-bold
+  }
+
+  .li-child-style-line {
+    @apply absolute top-1 -right-3 border-2 border-[#5B5959] w-[100%] h-full rounded-t-22 bg-[#C6C4C7] -z-[1]
+    }
+
+  .li-child-style-line-md {
+    @apply top-2 -right-4 border-4
+  }
+
+  .li-child2-style {
+    @apply relative col-start-7 col-end-9 row-span-1 row-start-2 grid items-center text-sm border-2 border-b-0 rounded-t-22
+    }
+
+  .li-child2-style-md {
+    @apply  col-start-5 col-end-6 row-start-2 text-xl border-4 border-b-0 font-bold
+  }
+
+  .li-child3-style {
+    @apply relative col-start-9 col-end-11 row-span-1 row-start-2 grid items-center text-sm  border-2 border-b-0 rounded-t-22
+    }
+
+  .li-child3-style-md {
+    @apply  col-start-6 col-end-7 row-start-2 text-xl border-4 border-b-0 rounded-t-22 font-bold
+  }
+  
+}
+
+li {
+  background-color: #FFFAF2;
+  list-style: none;
+  /* box-shadow: 10px 0px #C6C4C7;
+  box-shadow: 10px 0px #535353; */
+}
+
