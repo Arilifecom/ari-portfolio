@@ -31,11 +31,17 @@ const Header =  () => {
           <li
           key={item.href}
           className={`${
-            index === 0 ? "li-main-style md:li-main-style-md" : `li-child${index}-style md:li-child${index}-style-md`
+            index === 0 
+              ? "li-main-style md:li-main-style-md" 
+              : index === 1 
+              ? "li-child1-style md:li-child1-style-md"
+              : index === 2
+              ? "li-child2-style md:li-child2-style-md"
+              : "li-child3-style md:li-child3-style-md"
           }`}>
             <a href={item.href}>{item.label}</a>
           <div className={`${
-            index === 0 ? "li-main-style-line md:li-main-style-line-md" : `li-child-style-line`
+            index === 0 ? "li-main-style-line md:li-main-style-line-md" : "li-child-style-line"
           }`} />
           </li>          
         )}
