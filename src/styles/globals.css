@@ -24,6 +24,9 @@
 
 @layer utilities {
 
+  /* 
+  Header Nav Styling -----------------------------
+  */
   .nav-style {
     @apply gap-1 grid grid-cols-10 grid-rows-2 w-[100vw]  border-b-2 border-dark  text-center z-0 pr-4
   }
@@ -79,13 +82,14 @@
   .li-child3-style-md {
     @apply  col-start-6 col-end-7 row-start-2 text-xl border-4 border-b-0 rounded-t-22 font-bold
   }
-  
+
+    /* 
+  -----------------------------/Header Nav Styling 
+  */
 }
 
 li {
   background-color: #FFFAF2;
   list-style: none;
-  /* box-shadow: 10px 0px #C6C4C7;
-  box-shadow: 10px 0px #535353; */
 }
 
