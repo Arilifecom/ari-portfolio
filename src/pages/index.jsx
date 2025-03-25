@@ -1,5 +1,5 @@
-import CommonLayout from "src/compornents/CommonLayout";
-import MainLayout from "src/compornents/MainLayout";
+import CommonLayout from "src/compornents/layout/CommonLayout";
+import MainLayout from "src/compornents/layout/MainLayout";
 import Meta from "src/compornents/Meta";
 
 
