@@ -65,7 +65,7 @@ function AnimatedBtn({ text = "", className }) {
         className="relative rounded-full border-2 border-dark bg-dark px-6 py-2 text-2xl text-light transition-colors hover:bg-bg_primary hover:text-dark"
       >
         <span className="sr-only">{text}</span>
-        <span className="block h-8 overflow-hidden" aria-hidden>
+        <span className="block h-8 overflow-hidden font-mont" aria-hidden>
           {letters.map((letter, index) => (
             <span
               data-letter={letter}
