@@ -24,7 +24,7 @@ const Header =  () => {
 
 
   return (
-    <header className="fixed font-mont left-0 bottom-0 z-10 md:static md:z-0 md:w-full md:mt-10">
+    <header className="fixed font-mont left-0 bottom-0 z-10 md:static md:z-0 md:w-full">
        <nav className="nav-style md:nav-style-md">
 
         {sortedNavItems.map((item, index) => 
