@@ -1,5 +1,8 @@
 import AnimatedBtn from "src/compornents/AnimatedBtn";
+import AnimatedCrackerPop from "src/compornents/AnimatedCrackerPop";
+import AnimatedText from "src/compornents/AnimatedText";
 import Card from "src/compornents/Card";
+import { CrackerIcon } from "src/compornents/Icons";
 import CommonLayout from "src/compornents/layout/CommonLayout";
 import MainLayout from "src/compornents/layout/MainLayout";
 import Meta from "src/compornents/Meta";
@@ -10,11 +13,14 @@ export default function Home() {
     <>
     <Meta description="独学のフロントエンド開発・Web制作者Ariのポートフォリオサイトです。" />
     <CommonLayout>
-      <MainLayout>
-    <div>
-       <Card className={"max-w-[500px] mx-auto"} title={"Home"} imgeUrl={"/p-001.png"} imgeclassName="border-2"/>
-       <AnimatedBtn text="Hello" className="text-center my-4"/>
-    </div>
+      <MainLayout className="h-[90vh] flex flex-col items-start md:flex-row-reverse">
+        <div className="md:w-1/2">
+          <AnimatedText text="Learning to Create with Coding" className="md:text-left md:text-[80px]"/>
+          <AnimatedBtn text="Ariについて" className="text-center my-4 md:text-left"/>
+        </div>
+        <div className="w-full relative h-[100%] md:w-1/2" id="container">
+          <AnimatedCrackerPop />
+        </div>
       </MainLayout>
     </CommonLayout>
     </>
