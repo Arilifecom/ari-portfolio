@@ -9,7 +9,7 @@ function AnimatedBtn({ text = "", className }) {
   const letters = text.split(""); 
 
   const onButtonClick = () => {
-    const sparkles = Array.from({ length: 12 });
+    const sparkles = Array.from({ length: 10 });
     const sparklesAnimation = sparkles.map((_, index) => [
       `.sparkle-${index}`,
       {
@@ -62,7 +62,7 @@ function AnimatedBtn({ text = "", className }) {
     <div ref={scope} className={className}>
       <button
         onClick={onButtonClick}
-        className="relative rounded-full border-2 border-dark bg-dark px-6 py-2 text-2xl text-light transition-colors hover:bg-bg_primary hover:text-dark"
+        className="relative rounded-full border-2 border-dark bg-dark px-6 py-2 text-lg text-light font-bold transition-colors hover:bg-bg_primary hover:text-dark"
       >
         <span className="sr-only">{text}</span>
         <span className="block h-8 overflow-hidden font-mont" aria-hidden>
@@ -80,7 +80,7 @@ function AnimatedBtn({ text = "", className }) {
           aria-hidden
           className="pointer-events-none absolute inset-0 -z-10 block"
         >
-          {Array.from({ length: 20 }).map((_, index) => (
+          {Array.from({ length: 10 }).map((_, index) => (
             <svg
               className={`absolute left-1/2 top-1/2 opacity-0 sparkle-${index}`}
               key={index}
