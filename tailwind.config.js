@@ -12,6 +12,9 @@ module.exports = {
 
       lg: "1024px",
       // => @media (min-width: 1024px) { ... }
+
+      xl: "1440px",
+      // => @media (min-width: 1440px) { ... }
     },
     colors: {
       bg_primary: "#E3F6F5",
