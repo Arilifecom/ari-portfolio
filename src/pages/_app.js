@@ -22,7 +22,7 @@ export default function App({ Component, pageProps }) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main
-        className={`${montserrat.className} ${notoSansJP.className} bg-bg_primary w-full min-h-screen`}
+        className={`${montserrat.className} ${notoSansJP.className} bg-bg_primary text-dark w-full min-h-screen`}
       >
         <Component {...pageProps} />
       </main>
