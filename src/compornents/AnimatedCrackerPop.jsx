@@ -1,20 +1,25 @@
 import { motion } from 'framer-motion';
 import { useEffect, useState } from 'react';
-import { AriIcon, BlueStarIcon, ColorFigmaIcon, CrackerIcon, GreenCircleIcon, GreenHookIcon, GreenWaveIcon, PinkStarIcon, PurpleCircleIcon, PurpleLineIcon, PurpleWaveIcon, YellowCircleIcon, YellowStarIcon } from 'src/compornents/Icons';
+import { AriIcon, BlueStarIcon, ColorFigmaIcon, CrackerIcon, CssIcon, GreenCircleIcon, GreenHookIcon, GreenWaveIcon, HtmlIcon, JavaScriptIcon, NextJsIcon, PinkStarIcon, PurpleCircleIcon, PurpleLineIcon, PurpleWaveIcon, TailwindIcon, YellowCircleIcon, YellowStarIcon } from 'src/compornents/Icons';
 
 const AnimatIcons = [
-  <PurpleLineIcon className="w-12 md:w-20" />,
-  <GreenHookIcon className="w-12 md:w-10" />,
-  <PurpleWaveIcon className="w-12 md:w-16" />,
-  <GreenWaveIcon className="w-12 md:w-12" />,
-  <GreenCircleIcon className="w-12 md:w-10" />,
-  <YellowCircleIcon className="w-12 md:w-12" />,
-  <PurpleCircleIcon className="w-12 md:w-6" />,
-  <PinkStarIcon className="w-12 md:w-20" />,
-  <BlueStarIcon className="w-12 md:w-20" />,
-  <YellowStarIcon className="w-12 md:w-20" />,
-  <ColorFigmaIcon className="w-12 md:w-16" />,
-  <AriIcon className="w-12 md:w-28" />
+  <PurpleLineIcon className="w-10 md:w-16 xl:w-20" />,
+  <GreenHookIcon className="w-4 md:w-6 xl:w-10" />,
+  <PurpleWaveIcon className="w-6 md:w-7 xl:w-8" />,
+  <GreenWaveIcon className="w-6 md:w-8 xl:w-12" />,
+  <GreenCircleIcon className="w-8 md:w-9 xl:w-10" />,
+  <YellowCircleIcon className="w-8 md:w-10 xl:w-12" />,
+  <PurpleCircleIcon className="w-5 md:w-6 xl:w-6" />,
+  <PinkStarIcon className="w-8 md:w-16 xl:w-20" />,
+  <BlueStarIcon className="w-6 xl:w-6" />,
+  <YellowStarIcon className="w-7 md:w-14 xl:w-20" />,
+  <ColorFigmaIcon className="w-12 md:w-14 xl:w-16" />,
+  <AriIcon className="w-16 md:w-20 xl:w-28" />,
+  <CssIcon className="w-16 md:w-16 xl:w-16" />,
+  <HtmlIcon className="w-14 md:w-16 xl:w-18" />,
+  <JavaScriptIcon className="w-16 md:w-20 xl:w-20" />,
+  <TailwindIcon className="w-16 md:w-16 xl:w-20" />,
+  <NextJsIcon className="w-16 md:w-20 xl:w-20" />
 ]
 
 const AnimatedCrackerPop = () => {
@@ -28,10 +33,11 @@ const AnimatedCrackerPop = () => {
   const getRandomPosition = () => {
     const container = document.getElementById("container");
     const { width, height } = container.getBoundingClientRect();
-    
+
     // コンテナサイズ内でランダムな数値を取得
-    const randomX = randomNumberBetween(80, width - 80);  // 幅内でランダム
-    const randomY = randomNumberBetween(80, height -80); // 高さ内でランダム
+    const randomX = randomNumberBetween(0, width - 64);  // 幅内でランダム
+    const randomY = randomNumberBetween(0, height - 64); // 高さ内でランダム
+    
     return { x: randomX, y: randomY };
   };
 
@@ -52,7 +58,7 @@ const AnimatedCrackerPop = () => {
       animate={{ 
         x: 10,
         y: 10,
-        opacity:1
+        opacity:1,
       }}
       transition={{
         type: "spring",
@@ -60,20 +66,20 @@ const AnimatedCrackerPop = () => {
         damping: 10,
         duration: 1,
       }}
-       className="absolute bottom-0 -left-10 md:-left-20"
+       className="absolute bottom-0 -left-10 md:left-0 xl:-left-20"
        onAnimationComplete={() => setAnimationComplete(true)}
     >
-      <CrackerIcon  className="w-40 md:w-60"/>
+      <CrackerIcon  className="w-40 md:w-52 xl:w-60"/>
     </motion.div>
 
     { animationComplete && (
-      <div>
+      <>
       { AnimatIcons.map(( Icon, index) =>(
         <motion.div
           key={index}
           initial={{
             opacity:0 }}
-            animate={{
+          animate={{
             opacity: 1,
             x: getRandomPosition().x,
             y: -getRandomPosition().y,
@@ -89,7 +95,7 @@ const AnimatedCrackerPop = () => {
           {Icon}
         </motion.div>
       ))}
-     </div>
+     </>
     )}
     </>
   )
