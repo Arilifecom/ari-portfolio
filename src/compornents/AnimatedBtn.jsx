@@ -62,7 +62,7 @@ function AnimatedBtn({ text = "", className }) {
     <div ref={scope} className={className}>
       <button
         onClick={onButtonClick}
-        className="relative rounded-full border-2 border-dark bg-dark px-6 py-2 text-lg text-light font-bold transition-colors hover:bg-bg_primary hover:text-dark"
+        className="relative rounded-full border-2 border-dark bg-dark px-6 py-2 text-lg md:text-xl text-light font-bold transition-colors hover:bg-bg_primary hover:text-dark"
       >
         <span className="sr-only">{text}</span>
         <span className="block h-8 overflow-hidden font-mont" aria-hidden>
