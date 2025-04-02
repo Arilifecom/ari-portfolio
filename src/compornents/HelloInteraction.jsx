@@ -1,6 +1,9 @@
 import { useState } from "react";
-import HelloInteractionApp from "src/compornents/HelloInteractionApp";
+import InteractionCallApp from "src/compornents/InteractionCallApp";
 import { HelloIcon, ResetIcon } from "src/compornents/Icons";
+import InteractionHelloApp from "src/compornents/InteractionHelloApp";
+import InteractionPlayApp from "src/compornents/InteractionPlayApp";
+import InteractionDrowApp from "src/compornents/InteractionDrowApp";
 
 const HelloInteraction = () => {
   const [selectedAnimation, setSelectedAnimation] = useState(null);
@@ -12,7 +15,13 @@ const HelloInteraction = () => {
 
   const renderAnimation = () => {
     if (selectedAnimation === 0) {
-      return <HelloInteractionApp />;
+      return <InteractionCallApp />;
+    }
+    if (selectedAnimation === 1) {
+      return <InteractionHelloApp />;
+    }
+    if (selectedAnimation === 2) {
+      return <InteractionDrowApp />;
     }
     if (selectedAnimation === 3) {
       return null;
@@ -31,7 +40,7 @@ const HelloInteraction = () => {
             <HelloIcon className="w-8 md:w-12 animate-sway" />
           </span>
         </div>
-        <div className="relative flex flex-col min-h-64 overflow-hidden items-center bg-bg_white p-3 my-3">
+        <div className="relative flex flex-col min-h-64 overflow-hidden items-center bg-bg_white my-3">
           {renderAnimation()}
         </div>
         <div className="flex md:flex-row items-center justify-center gap-2 pt-3">
@@ -51,7 +60,7 @@ const HelloInteraction = () => {
             className="btn-base w-28 border-2 border-dark hover:bg-bg_primary hover:text-dark"
             onClick={() => handleButtonClick(2)}
           >
-            Play
+            Drow
           </button>
           <button
             className="btn-base w-28 border-2 border-dark hover:bg-bg_primary fill-light hover:fill-dark"
