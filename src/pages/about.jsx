@@ -2,13 +2,14 @@ import AnimatedNumber from "src/compornents/AnimatedNumuber";
 import HelloInteraction from "src/compornents/HelloInteraction";
 import CommonLayout from "src/compornents/layout/CommonLayout";
 import MainLayout from "src/compornents/layout/MainLayout";
+import Skills from "src/compornents/Skills";
 
 export default function About() {
   return (
     <>
       <CommonLayout>
         <MainLayout>
-          <div className="grid justify-center gap-10 xl:grid-cols-12 xl:grid-rows-5 md:gap-8">
+          <div className="grid justify-center gap-10 md:gap-14 xl:grid-cols-12 xl:grid-rows-5 xl:gap-8 mb-128 md:mb-256">
             <div className="px-3 xl:py-5 xl:px-10 flex flex-col items-start justify-start gap-3 md:gap-5 xl:col-span-5 xl:row-span-5">
               <h2 className="text-lg font-bold text-dark/75">About Ari</h2>
               <p>はじめまして。Ariと申します。</p>
@@ -31,6 +32,7 @@ export default function About() {
             <AnimatedNumber className="xl:col-span-7 xl:col-start-6 xl:row-span-1" />
             <HelloInteraction className="xl:col-start-6 xl:col-span-7 xl:row-span-4 xl:row-start-2" />
           </div>
+          <Skills className="mb-128 md:mb-256" />
         </MainLayout>
       </CommonLayout>
     </>
