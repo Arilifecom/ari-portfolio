@@ -13,7 +13,7 @@
   }
 
   .title-large-blue {
-    @apply font-bold text-sm md:text-base text-blue;
+    @apply font-bold text-sm md:text-base text-blue mb-2;
   }
 
   .card-base {

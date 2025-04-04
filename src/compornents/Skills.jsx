@@ -12,7 +12,7 @@ import {
 } from "src/compornents/Icons";
 
 const show = {
-  initial: { y: -100, x: 100, opacity: 0 },
+  initial: { y: 0, x: 0, opacity: 0 },
   animate: (i) => ({
     y: 0,
     x: 0,
@@ -36,7 +36,9 @@ const Skill = ({ title, Icon, index }) => {
       className="max-w-42 border-[1px] border-dark py-2 px-3 xl:py-4 xl:px-4 flex flex-col justify-center items-center gap-2"
     >
       {Icon}
-      <p className="btn-base min-w-28 text-sm">{title}</p>
+      <p className="btn-base bg-[#BAE8E8] border-none text-dark min-w-28 text-sm">
+        {title}
+      </p>
     </motion.li>
   );
 };
