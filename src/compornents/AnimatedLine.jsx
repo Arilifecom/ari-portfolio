@@ -1,6 +1,14 @@
 import { motion, useMotionValueEvent, useScroll } from "motion/react";
 import { useEffect, useRef, useState } from "react";
-import { AriwowIcon } from "src/compornents/Icons";
+import {
+  AriwowIcon,
+  BlueStarIcon,
+  GreenCircleIcon,
+  GreenWaveIcon,
+  PinkStarIcon,
+  PurpleWaveIcon,
+  YellowCircleIcon,
+} from "src/compornents/Icons";
 
 const AnimatedLine = ({ lineRef }) => {
   const containerRef = useRef(null);
@@ -112,7 +120,6 @@ const AnimatedLine = ({ lineRef }) => {
           width="100"
           height="100"
           viewBox="0 0 73 77"
-          className="border-2"
           style={{
             transform: `translate(${point.x}px, ${point.y}px)`,
           }}
@@ -234,6 +241,14 @@ const AnimatedLine = ({ lineRef }) => {
             clipRule="evenodd"
           />
         </svg>
+        <BlueStarIcon className="w-8 xl:w-10 absolute top-[0%] right-[8%]" />
+        <GreenCircleIcon className="w-8 xl:w-16 absolute top-[18%] left-[30%]" />
+        <PurpleWaveIcon className="w-8 xl:w-12 absolute top-[38%] right-3" />
+        <YellowCircleIcon className="w-12 xl:w-10 absolute top-[58%] left-3" />
+        <PinkStarIcon className="w-10 xl:w-18 absolute top-[77%] left-[20%]" />
+        <BlueStarIcon className="w-6 xl:w-16 absolute top-[79%] left-[40%]" />
+        <GreenWaveIcon className="w-10 xl:w-18 absolute bottom-[10%] right-6" />
+        <YellowCircleIcon className="w-8 xl:w-12 absolute bottom-[0%] left-4" />
       </div>
     </div>
   );
