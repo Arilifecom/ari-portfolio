@@ -1,4 +1,5 @@
 import AnimatedNumber from "src/compornents/AnimatedNumuber";
+import WorkExperience from "src/compornents/WorkExperience";
 import HelloInteraction from "src/compornents/HelloInteraction";
 import CommonLayout from "src/compornents/layout/CommonLayout";
 import MainLayout from "src/compornents/layout/MainLayout";
@@ -33,6 +34,7 @@ export default function About() {
             <HelloInteraction className="xl:col-start-6 xl:col-span-7 xl:row-span-4 xl:row-start-2" />
           </div>
           <Skills className="mb-128 md:mb-256" />
+          <WorkExperience className="mb-128 md:mb-256" />
         </MainLayout>
       </CommonLayout>
     </>
