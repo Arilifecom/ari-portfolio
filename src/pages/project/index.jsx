@@ -64,7 +64,7 @@ export default function Project() {
   return (
     <>
       <CommonLayout>
-        <div className=" bg-light w-full z-0 border-t-4 border-solid border-dark px-5">
+        <div className=" bg-light w-full z-0 border-t-4 border-solid border-dark px-5 pb-24">
           <div ref={containerRef}>
             {projects.map((project, index) => {
               const liRef = useRef(null);
@@ -77,12 +77,12 @@ export default function Project() {
               return (
                 <section
                   key={index}
-                  className="relative flex flex-col items-center justify-center pt-16 pb-40 md:py-28"
+                  className="relative flex flex-col items-center justify-center pt-16 pb-32 md:pb-24"
                 >
                   <div>
                     <a ref={liRef} href="#">
                       <Card
-                        className="max-w-[600px] mx-auto mb-12"
+                        className="max-w-[400px] mx-auto mb-12"
                         title={project.title}
                         imgeUrl={project.ProjectImge}
                         imgeclassName="border-2"
