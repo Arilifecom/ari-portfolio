@@ -3,8 +3,8 @@ import { useRouter } from "next/router";
 const NAV_ITEMS = [
   { href: "/", label: "Home" },
   { href: "/about", label: "About" },
-  { href: "/project", label: "Project" },
-  { href: "/blog", label: "Blog" },
+  { href: "/projects", label: "Project" },
+  { href: "/blogs", label: "Blog" },
 ];
 
 const Header = () => {
