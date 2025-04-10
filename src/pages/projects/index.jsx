@@ -1,5 +1,7 @@
 import Card from "src/compornents/Card";
 import CommonLayout from "src/compornents/layout/CommonLayout";
+import { useEffect, useRef } from "react";
+import projects from "/public/data/projects.json";
 import {
   motion,
   useMotionValue,
@@ -7,32 +9,7 @@ import {
   useSpring,
   useTransform,
 } from "framer-motion";
-import { useEffect, useRef } from "react";
-
-const projects = [
-  {
-    titleNumber: "001",
-    title: "Ari ホームページ制作",
-    ProjectImge: "/arihomepage.png",
-    techStack: [
-      "HTML",
-      "CSS",
-      "JavaScript",
-      "GSAPP",
-      "PHP",
-      "Composer",
-      "Bootstrap",
-      "Figma",
-      "GitHub Actions",
-    ],
-  },
-  {
-    titleNumber: "002",
-    title: "Saving-UP",
-    ProjectImge: "/savingup.png",
-    techStack: ["HTML", "Next", "JavaScript", "Tailwind", "Figma", "Vercel"],
-  },
-];
+import Link from "next/link";
 
 export default function Project() {
   const containerRef = useRef(null);
@@ -64,7 +41,7 @@ export default function Project() {
   return (
     <>
       <CommonLayout>
-        <div className=" bg-light w-full z-0 border-t-4 border-solid border-dark px-5 pb-24">
+        <div className=" bg-light w-full z-0 border-t-4 border-solid border-dark px-5 pb-24 lg:pb-64">
           <div ref={containerRef}>
             {projects.map((project, index) => {
               const liRef = useRef(null);
@@ -80,24 +57,34 @@ export default function Project() {
                   className="relative flex flex-col items-center justify-center pt-16 pb-32 md:pb-24"
                 >
                   <div>
-                    <a ref={liRef} href="#">
+                    <Link ref={liRef} href={`/projects/${project.id}`}>
                       <Card
                         className="max-w-[400px] mx-auto mb-12"
                         title={project.title}
                         imgeUrl={project.ProjectImge}
                         imgeclassName="border-2"
                       />
-                      <motion.h2
-                        // Hide until scroll progress is measured
-                        className="text-pink font-mont font-bold text-4xl md:text-6xl xl:text-7xl inline-block m-0 absolute top-[60%] left-3/4"
+                      <motion.div
                         style={{ y }}
+                        className="absolute top-[50%] left-[60%]"
                       >
-                        #{project.titleNumber}
-                      </motion.h2>
-                    </a>
+                        <h2
+                          // Hide until scroll progress is measured
+                          className=" text-pink font-mont font-black text-5xl md:text-6xl xl:text-7xl"
+                        >
+                          #{project.titleNumber}
+                        </h2>
+                        <span className="block title-large-bk text-sm bg-[#FFD803] rounded-8 p-2 text-dark font-noto">
+                          {project.siteType}
+                        </span>
+                      </motion.div>
+                    </Link>
                     <ul className="flex flex-wrap gap-2 px-4 md:max-w-xl xl:max-w-2xl mx-auto">
                       {project.techStack.map((tec, i) => (
-                        <li key={i} className="btn-base">
+                        <li
+                          key={i}
+                          className="btn-base text-sm md:text-base text-left"
+                        >
                           {tec}
                         </li>
                       ))}
