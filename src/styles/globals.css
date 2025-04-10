@@ -9,11 +9,11 @@
            py-2 px-4 text-center text-light;
   }
   .title-large-bk {
-    @apply font-bold text-xl md:text-2xl;
+    @apply font-bold text-2xl;
   }
 
   .title-large-blue {
-    @apply font-bold text-sm md:text-base text-blue mb-2;
+    @apply font-black text-base text-blue mb-2;
   }
 
   .card-base {
@@ -97,4 +97,12 @@
 
 li {
   list-style: none;
+}
+
+/* 
+  Background Pattern -----------------------------
+  */
+.bg-pattern {
+  background-image: url("data:image/svg+xml,%3Csvg%20width%3D%2228%22%20height%3D%2229%22%20viewBox%3D%220%200%2028%2029%22%20fill%3D%22none%22%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%3E%3Cpath%20d%3D%22M6.32031%200H7.96094L24.25%2028.125H22.6094L6.32031%200ZM9.64062%200H11.3008L27.5703%2028.125H25.8906L9.64062%200Z%22%20fill%3D%22%23E6E6E6%22/%3E%3Cpath%20d%3D%22M0%200H1.64062L17.9297%2028.125H16.2891L0%200ZM3.32031%200H4.98047L21.25%2028.125H19.5703L3.32031%200Z%22%20fill%3D%22%23E6E6E6%22/%3E%3C/svg%3E");
+  background-repeat: repeat;
 }

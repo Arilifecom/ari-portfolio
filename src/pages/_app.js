@@ -5,6 +5,7 @@ import { Noto_Sans_JP } from "next/font/google";
 
 const montserrat = Montserrat({
   subsets: ["latin"],
+  weight: ["400", "700", "900"],
   variable: "--font-mont",
 });
 
@@ -22,7 +23,7 @@ export default function App({ Component, pageProps }) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main
-        className={`${montserrat.className} ${notoSansJP.className} bg-bg_primary text-dark w-full min-h-screen`}
+        className={`${montserrat.variable} ${notoSansJP.variable} font-noto bg-bg_primary text-dark w-full min-h-screen`}
       >
         <Component {...pageProps} />
       </main>

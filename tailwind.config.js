@@ -28,8 +28,8 @@ module.exports = {
     },
     extend: {
       fontFamily: {
-        mont: ["Montserrat", "sans-serif"],
-        noto: ["Noto Sans JP", "sans-serif"],
+        mont: ["var(--font-mont)", "sans-serif"],
+        noto: ["var(--font-noto-sans-jp)", "sans-serif"],
       },
       spacing: {
         128: "8rem",
