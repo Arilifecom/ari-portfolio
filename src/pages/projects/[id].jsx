@@ -34,7 +34,7 @@ export async function getStaticProps({ params }) {
 const ProjectDetail = ({ project }) => {
   return (
     <>
-      <div className="px-7 md:px-20 lg:px-32 py-5">
+      <div className="px-7 md:px-20 lg:px-32 py-5 mb-10">
         <a href="/projects" className="btn-base text-xl md:text-2xl">
           <svg
             width="24"
