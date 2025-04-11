@@ -4,6 +4,7 @@
     "title": "Ariホームページ制作",
     "titleNumber": "001",
     "siteType": "コーポレートサイト",
+    "siteUrl": "https://ari-life.com",
     "ProjectImge": "/arihomepage.png",
     "techStack": [
       "HTML",
@@ -42,6 +43,7 @@
     "title": "Saving-UP",
     "titleNumber": "002",
     "siteType": "為替付き電卓WEBアプリ",
+    "siteUrl": "https://saving-up.ari-life.com/",
     "ProjectImge": "/savingup.png",
     "techStack": [
       "Next.js",
