@@ -74,7 +74,7 @@ export default function Project() {
                         >
                           #{project.titleNumber}
                         </h2>
-                        <span className="block title-large-bk text-sm bg-[#FFD803] rounded-8 p-2 text-dark font-noto">
+                        <span className="block font-bold text-center text-sm bg-[#FFD803] rounded-8 p-2 text-dark font-noto">
                           {project.siteType}
                         </span>
                       </motion.div>

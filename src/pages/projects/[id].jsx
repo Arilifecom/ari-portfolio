@@ -61,13 +61,24 @@ const ProjectDetail = ({ project }) => {
           </span>
           {project.title}
         </h1>
-        <div className="flex flex-col items-center">
-          <Card
-            className="max-w-[400px] mx-auto my-8 lg:my-12 xl:my-16"
-            title={project.title}
-            imgeUrl={project.ProjectImge}
-            imgeclassName="border-2"
-          />
+        <div className="flex flex-col items-center justify-center gap-8 md:flex-row">
+          <div>
+            <Card
+              className="max-w-[400px] mx-auto my-8 lg:my-12 xl:my-16"
+              title={project.title}
+              imgeUrl={project.ProjectImge}
+              imgeclassName="border-2"
+            />
+          </div>
+          <div>
+            <a
+              target="blank"
+              href={project.siteUrl}
+              className="btn-base bg-[#FFD803] text-dark w-52 py-4 hover:shadow-lg	"
+            >
+              サイトへ行く
+            </a>
+          </div>
         </div>
         <div className="w-full bg-pattern h-6 mb-10 xl:mb-24" />
 
