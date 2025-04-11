@@ -4,9 +4,9 @@ const randomNumberBetween = (min, max) => {
   return Math.floor(Math.random() * (max - min + 1) + min);
 };
 
-function AnimatedBtn({ text = "", className }) {
+function AnimatedBtn({ text = "", className, link = "" }) {
   const [scope, animate] = useAnimate();
-  const letters = text.split(""); 
+  const letters = text.split("");
 
   const onButtonClick = () => {
     const sparkles = Array.from({ length: 10 });
@@ -60,9 +60,10 @@ function AnimatedBtn({ text = "", className }) {
 
   return (
     <div ref={scope} className={className}>
-      <button
+      <a
         onClick={onButtonClick}
-        className="relative rounded-full border-2 border-dark bg-dark px-6 py-2 text-lg md:text-xl text-light font-bold transition-colors hover:bg-bg_primary hover:text-dark"
+        href={link}
+        className="relative inline-block rounded-full border-2 border-dark bg-dark px-6 py-2 text-lg md:text-xl text-light font-bold transition-colors hover:bg-bg_primary hover:text-dark"
       >
         <span className="sr-only">{text}</span>
         <span className="block h-8 overflow-hidden font-mont" aria-hidden>
@@ -90,7 +91,7 @@ function AnimatedBtn({ text = "", className }) {
             >
               <path
                 d="M66.39,4,82.11,40.76,122,44.33a3.2,3.2,0,0,1,1.83,5.59h0L93.64,76.25l8.92,39a3.2,3.2,0,0,1-4.87,3.4L63.44,98.19,29.09,118.73a3.2,3.2,0,0,1-4.76-3.46h0l8.92-39L3.09,49.92A3.2,3.2,0,0,1,5,44.32l39.74-3.56L60.49,4a3.2,3.2,0,0,1,5.9,0Z"
-                fill="rgba(0, 0, 0, 0.5)" 
+                fill="rgba(0, 0, 0, 0.5)"
               />
               <path
                 className="fill-blue"
@@ -99,7 +100,7 @@ function AnimatedBtn({ text = "", className }) {
             </svg>
           ))}
         </span>
-      </button>
+      </a>
     </div>
   );
 }
