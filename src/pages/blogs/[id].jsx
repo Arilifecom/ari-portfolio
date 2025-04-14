@@ -29,6 +29,7 @@ export default function BlogDetail({ data }) {
         <div className="pt-10"></div>
         <h1 className={styles.title}>{data.title}</h1>
         <p className={styles.description}>{data.description}</p>
+        <p>{new Date(data.publishedAt).toLocaleDateString()}</p>
         <div className={styles.meta}></div>
         <picture>
           <source type="image/webp" media="(max-width: 640px)" />
