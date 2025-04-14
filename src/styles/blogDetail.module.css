@@ -1,3 +1,7 @@
+.content {
+  width: 100%;
+}
+
 .main {
   background-color: white;
   width: auto;
@@ -173,6 +177,13 @@
 .content > table td {
   text-align: left;
   padding: 1rem;
+}
+
+.content > pre > code {
+  background-color: #1e1e1e;
+  display: block;
+  overflow-x: auto;
+  padding: 16px;
 }
 
 @media (min-width: 1024px) {

@@ -1,6 +1,8 @@
 import Footer from "src/compornents/Footer";
 import { getBlogDetail } from "src/libs/microcms";
+import formatRichText from "src/libs/utils";
 import styles from "src/styles/blogDetail.module.css";
+import "highlight.js/styles/atom-one-dark.css";
 
 export default function BlogDetail({ data }) {
   return (
@@ -36,7 +38,9 @@ export default function BlogDetail({ data }) {
         </picture>
         <div
           className={styles.content}
-          dangerouslySetInnerHTML={{ __html: data.content }}
+          dangerouslySetInnerHTML={{
+            __html: `${formatRichText(data.content)}`,
+          }}
         />
       </main>
       <Footer />
