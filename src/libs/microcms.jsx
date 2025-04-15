@@ -9,9 +9,12 @@ export const client = createClient({
 export const getBlogList = async (queries) => {
   const list = await client.getList({
     endpoint: "blogs",
-    queries,
-    fields: "id,title,publishedAt",
+    queries: {
+      fields: "id,title,publishedAt",
+      ...queries,
+    },
   });
+
   return list;
 };
 
@@ -21,5 +24,27 @@ export const getBlogDetail = async (contentId, queries) => {
     contentId,
     queries,
   });
+
+  return detail;
+};
+
+export const getCategoryList = async (queries) => {
+  const list = await client.getList({
+    endpoint: "categories",
+    queries: {
+      fields: "id,name",
+      ...queries,
+    },
+  });
+
+  return list;
+};
+
+export const getCategoryDetail = async (categoryId) => {
+  const detail = await client.get({
+    endpoint: "categories",
+    contentId: categoryId,
+  });
+
   return detail;
 };
