@@ -49,7 +49,31 @@ export const getCategoryDetail = async (categoryId, queries = {}) => {
       ...queries,
     },
   });
-  console.log(detail);
+
+  return detail;
+};
+
+export const getTagList = async (queries = {}) => {
+  const list = await client.getList({
+    endpoint: "tags",
+    queries: {
+      fields: "id,name",
+      ...queries,
+    },
+  });
+
+  return list;
+};
+
+export const getTagDetail = async (tagId, queries = {}) => {
+  const detail = await client.get({
+    endpoint: "tags",
+    contentId: tagId,
+    queries: {
+      fields: "id,name",
+      ...queries,
+    },
+  });
 
   return detail;
 };

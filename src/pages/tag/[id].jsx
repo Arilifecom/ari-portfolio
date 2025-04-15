@@ -1,0 +1,80 @@
+import Link from "next/link";
+import Footer from "src/compornents/Footer";
+import { AriIcon } from "src/compornents/Icons";
+import MainLayout from "src/compornents/layout/MainLayout";
+import PrevButton from "src/compornents/PrevButton";
+import { client, getTagDetail, getTagList } from "src/libs/microcms";
+
+const TagPage = ({ blog, tag }) => {
+  // カテゴリーに紐付いたコンテンツがない場合に表示
+  if (blog.length === 0) {
+    return (
+      <>
+        <PrevButton />
+        <MainLayout className="py-20 min-h-screen border-b-4">
+          <div className="flex flex-col justify-center items-center">
+            <h1 className="title-large-bk pb-9">該当する記事はありません</h1>
+            <AriIcon className="w-28 md:w-32" />
+          </div>
+        </MainLayout>
+        <Footer className="border-t-0" />
+      </>
+    );
+  }
+
+  return (
+    <>
+      <PrevButton />
+      <MainLayout className="py-20 min-h-screen">
+        <h1 className="mx-auto inline-block w-full font-bold font-mont text-5xl md:text-6xl lg:text-7xl text-center mb-8 md:mb-16">
+          {tag.name}
+        </h1>
+        <div>
+          {blog.map((blog) => (
+            <div key={blog.id} className="relative z-0">
+              <Link legacyBehavior href={`/blogs/${blog.id}`}>
+                <a className="card-base flex items-center justify-between pt-4 pb-4 mb-4 rounded-8">
+                  <h2 className="title-large-bk text-sm md:text-base mr-4">
+                    {blog.title}
+                  </h2>
+                  <p className="title-large-blue text-sm md:text-base">
+                    {new Date(blog.publishedAt).toLocaleDateString()}
+                  </p>
+                </a>
+              </Link>
+              <div className="absolute top-1 -right-1 -z-10 w-[100%] h-[104%] rounded-8 bg-[#C6C4C7]" />
+            </div>
+          ))}
+        </div>
+      </MainLayout>
+      <Footer />
+    </>
+  );
+};
+
+export default TagPage;
+
+// 静的生成のためのパスを指定します
+export const getStaticPaths = async () => {
+  const data = await getTagList();
+  const paths = data.contents.map((content) => `/tag/${content.id}`);
+  return { paths, fallback: "blocking" };
+};
+
+// データをテンプレートに受け渡す部分の処理を記述します
+export const getStaticProps = async (context) => {
+  const id = context.params.id;
+  const tag = await getTagDetail(id);
+
+  const data = await client.get({
+    endpoint: "blogs",
+    queries: { filters: `tag[contains]${id}` },
+  });
+
+  return {
+    props: {
+      tag,
+      blog: data.contents,
+    },
+  };
+};

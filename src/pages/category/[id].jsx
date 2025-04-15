@@ -76,7 +76,7 @@ const CategoryPage = ({ blog, category }) => {
         <ul className="flex flex-wrap justify-center gap-2 mb-12">
           {tagList.map((tag) => (
             <li key={tag.id}>
-              <Link legacyBehavior href={`/tags/${tag.id}`}>
+              <Link legacyBehavior href={`/tag/${tag.id}`}>
                 <a className="tag-base">
                   <TagIcon className="w-4 mr-1" />
                   {tag.name}
