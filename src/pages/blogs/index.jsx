@@ -10,11 +10,11 @@ export default function Blog({ data, category }) {
       <CommonLayout>
         <MainLayout className="py-20">
           <AnimatedText text="Keep Learning, Keep Blogging" />
-          <ul className="max-w-2xl mx-auto pb-8 flex flex-wrap gap-3 justify-center">
+          <ul className="max-w-2xl mx-auto pb-8 flex flex-wrap gap-2 md:gap-3 justify-center">
             {category.map((category) => (
               <li
                 key={category.id}
-                className="btn-base bg-bg_primary text-dark hover:shadow-lg"
+                className="btn-base text-sm md:text-base bg-bg_primary text-dark hover:shadow-lg"
               >
                 <Link href={`/category/${category.id}`}>{category.name}</Link>
               </li>
