@@ -1,10 +1,12 @@
 import Link from "next/link";
 import Footer from "src/compornents/Footer";
-import { AriIcon } from "src/compornents/Icons";
+import { AriIcon, TagIcon } from "src/compornents/Icons";
 import MainLayout from "src/compornents/layout/MainLayout";
 import { client, getCategoryDetail, getCategoryList } from "src/libs/microcms";
 
 const CategoryPage = ({ blog, category }) => {
+  const tagList = category.tag ?? [];
+
   // カテゴリーに紐付いたコンテンツがない場合に表示
   if (blog.length === 0) {
     return (
@@ -31,6 +33,10 @@ const CategoryPage = ({ blog, category }) => {
         </div>
         <MainLayout className="py-20 min-h-screen border-b-4">
           <div className="flex flex-col justify-center items-center">
+            <h1 className="mx-auto inline-block w-full font-bold font-mont text-5xl md:text-6xl lg:text-7xl text-center mb-8 md:mb-16">
+              {category.name}
+            </h1>
+
             <h1 className="title-large-bk pb-9">該当する記事はありません</h1>
             <AriIcon className="w-28 md:w-32" />
           </div>
@@ -66,6 +72,19 @@ const CategoryPage = ({ blog, category }) => {
         <h1 className="mx-auto inline-block w-full font-bold font-mont text-5xl md:text-6xl lg:text-7xl text-center mb-8 md:mb-16">
           {category.name}
         </h1>
+        {/* タグ一覧表示 */}
+        <ul className="flex flex-wrap justify-center gap-2 mb-12">
+          {tagList.map((tag) => (
+            <li key={tag.id}>
+              <Link legacyBehavior href={`/tags/${tag.id}`}>
+                <a className="tag-base">
+                  <TagIcon className="w-4 mr-1" />
+                  {tag.name}
+                </a>
+              </Link>
+            </li>
+          ))}
+        </ul>
         <div>
           {blog.map((blog) => (
             <div key={blog.id} className="relative z-0">

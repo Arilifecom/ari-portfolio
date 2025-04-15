@@ -6,7 +6,7 @@ export const client = createClient({
   apiKey: process.env.MICROCMS_API_KEY,
 });
 
-export const getBlogList = async (queries) => {
+export const getBlogList = async (queries = {}) => {
   const list = await client.getList({
     endpoint: "blogs",
     queries: {
@@ -18,7 +18,7 @@ export const getBlogList = async (queries) => {
   return list;
 };
 
-export const getBlogDetail = async (contentId, queries) => {
+export const getBlogDetail = async (contentId, queries = {}) => {
   const detail = await client.getListDetail({
     endpoint: "blogs",
     contentId,
@@ -28,7 +28,7 @@ export const getBlogDetail = async (contentId, queries) => {
   return detail;
 };
 
-export const getCategoryList = async (queries) => {
+export const getCategoryList = async (queries = {}) => {
   const list = await client.getList({
     endpoint: "categories",
     queries: {
@@ -40,11 +40,16 @@ export const getCategoryList = async (queries) => {
   return list;
 };
 
-export const getCategoryDetail = async (categoryId) => {
+export const getCategoryDetail = async (categoryId, queries = {}) => {
   const detail = await client.get({
     endpoint: "categories",
     contentId: categoryId,
+    queries: {
+      fields: "id,name,tag",
+      ...queries,
+    },
   });
+  console.log(detail);
 
   return detail;
 };
