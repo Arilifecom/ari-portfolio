@@ -20,6 +20,14 @@ const formatRichText = (richText) => {
     $(elm).addClass("hljs");
   });
 
+  //<table>を <div>でラップし、table-wrapのクラス名を付与
+  $("table").each((_, elm) => {
+    const tableHtml = $.html(elm);
+    const wrapper = $('<div class="table-wrap"></div>');
+    wrapper.html(tableHtml);
+    $(elm).replaceWith(wrapper);
+  });
+
   return $.html();
 };
 
