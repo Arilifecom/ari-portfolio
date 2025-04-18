@@ -3,15 +3,18 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import Footer from "src/compornents/Footer";
 import { AriIcon, TagIcon } from "src/compornents/Icons";
 import MainLayout from "src/compornents/layout/MainLayout";
+import PrevButton from "src/compornents/PrevButton";
+import useScrollRestoration from "src/hooks/useScrollRestoration";
 import { client, getCategoryDetail, getCategoryList } from "src/libs/microcms";
 
-const CategoryPage = ({ blog: initialBlog, category }) => {
+const CategoryPage = ({ data, category }) => {
   const tagList = category.tag ?? [];
-  const [blogs, setBlogs] = useState(initialBlog);
-  const [offset, setOffset] = useState(initialBlog.length);
+  const [blogs, setBlogs] = useState(data);
+  const [offset, setOffset] = useState(data.length);
   const [loading, setLoading] = useState(false);
-  const [isEnd, setIsEnd] = useState(initialBlog.length < 10);
+  const [isEnd, setIsEnd] = useState(data.length < 10);
   const observerRef = useRef();
+  useScrollRestoration("blog_scrollY");
 
   const fetchMore = useCallback(async () => {
     if (loading || isEnd) return;
@@ -55,11 +58,7 @@ const CategoryPage = ({ blog: initialBlog, category }) => {
   if (blogs.length === 0) {
     return (
       <>
-        <div className="px-7 md:px-20 lg:px-32 py-5">
-          <a href="/blogs" className="btn-base text-xl md:text-2xl">
-            Prev
-          </a>
-        </div>
+        <PrevButton />
         <MainLayout className="py-20 min-h-screen border-b-4">
           <div className="flex flex-col justify-center items-center">
             <h1 className="font-mont font-bold text-center text-5xl md:text-6xl lg:text-7xl mb-8">
@@ -98,7 +97,7 @@ const CategoryPage = ({ blog: initialBlog, category }) => {
           ))}
         </ul>
         <div>
-          {blogs.map((blog) => (
+          {data.map((blog) => (
             <div key={blog.id} className="relative z-0">
               <Link legacyBehavior href={`/blogs/${blog.id}`}>
                 <a className="card-base flex items-center justify-between pt-4 pb-4 mb-4 rounded-8">
@@ -145,7 +144,7 @@ export const getStaticProps = async (context) => {
   return {
     props: {
       category,
-      blog: data.contents,
+      data: data.contents,
     },
     revalidate: 30,
   };
