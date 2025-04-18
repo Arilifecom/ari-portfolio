@@ -25,6 +25,7 @@ export default function BlogDetail({ data }) {
           }}
         />
       </main>
+      <PrevButton className="bg-bg_white" />
       <Footer />
     </>
   );
