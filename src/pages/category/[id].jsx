@@ -93,7 +93,7 @@ const CategoryPage = ({ data, category }) => {
           ))}
         </ul>
         <div>
-          {data.map((blog) => (
+          {blogs.map((blog) => (
             <div key={blog.id} className="relative z-0">
               <Link legacyBehavior href={`/blogs/${blog.id}`}>
                 <a className="card-base flex items-center justify-between pt-4 pb-4 mb-4 rounded-8">
