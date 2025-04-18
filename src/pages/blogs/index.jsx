@@ -1,37 +1,86 @@
 import Link from "next/link";
+import { useRouter } from "next/router";
 import { useCallback, useEffect, useRef, useState } from "react";
 import AnimatedText from "src/compornents/AnimatedText";
 import CommonLayout from "src/compornents/layout/CommonLayout";
 import MainLayout from "src/compornents/layout/MainLayout";
 import { getBlogList, getCategoryList } from "src/libs/microcms";
+import useBlogStore from "src/store/useBlogStore";
 
 export default function Blog({ data, category }) {
-  const [blogs, setBlogs] = useState(data);
-  const [offset, setOffset] = useState(data.length);
+  const router = useRouter();
   const [loading, setLoading] = useState(false);
-  const [isEnd, setIsEnd] = useState(data.length < 10);
   const observerRef = useRef();
 
+  const {
+    blogs,
+    offset,
+    isEnd,
+    scrollY,
+    setScrollY,
+    initBlogs,
+    addBlogs,
+    initialized,
+  } = useBlogStore();
+
+  useEffect(() => {
+    console.log("初期化状態:", initialized);
+    console.log("scrollY:", scrollY);
+  }, [initialized, scrollY]);
+
+  //scroll値保存処理
+  useEffect(() => {
+    const handleRouteChangeStart = () => {
+      const currentY = window.scrollY;
+      setScrollY(currentY);
+      sessionStorage.setItem("scrollY", currentY);
+    };
+
+    router.events.on("routeChangeStart", handleRouteChangeStart);
+    return () => {
+      router.events.off("routeChangeStart", handleRouteChangeStart);
+    };
+  }, [router, setScrollY]);
+
+  // 復元処理（一覧ページに戻ったとき）
+  useEffect(() => {
+    if (!router.isReady) return; // ルーター準備できてないなら待つ
+
+    const savedY = sessionStorage.getItem("scrollY");
+    if (savedY !== null) {
+      const y = parseInt(savedY, 10);
+      setScrollY(y);
+      // Hydration後 & レンダリング後にスクロール
+      requestAnimationFrame(() => {
+        setTimeout(() => {
+          window.scrollTo(0, y);
+        }, 0); // 必要であれば 0 → 50 くらいに増やす
+      });
+    }
+  }, [router.isReady, setScrollY]);
+
+  // 初回のみストアに初期データをセット
+  useEffect(() => {
+    if (!initialized && blogs.length === 0 && data.length > 0) {
+      initBlogs(data);
+    }
+  }, [data, blogs.length, initBlogs]);
+
+  // 無限スクロール：データ追加取得
   const fetchMore = useCallback(async () => {
     if (loading || isEnd) return;
-
     setLoading(true);
+
     try {
       const res = await fetch(`/api/blogs?offset=${offset}&limit=10`);
       const newBlogs = await res.json();
-
-      if (newBlogs.length === 0) {
-        setIsEnd(true);
-      } else {
-        setBlogs((prev) => [...prev, ...newBlogs]);
-        setOffset((prev) => prev + newBlogs.length);
-      }
+      addBlogs(newBlogs);
     } catch (error) {
       console.error("ブログの追加取得に失敗:", error);
     } finally {
       setLoading(false);
     }
-  }, [offset, loading, isEnd]);
+  }, [offset, loading, isEnd, addBlogs]);
 
   // IntersectionObserverで最下部に来たら fetchMore
   useEffect(() => {
@@ -50,6 +99,18 @@ export default function Blog({ data, category }) {
       if (target) observer.unobserve(target);
     };
   }, [fetchMore, loading, isEnd]);
+
+  // ページ離脱時にスクロール位置を保存
+  useEffect(() => {
+    const saveScroll = () => {
+      setScrollY(window.scrollY);
+    };
+    window.addEventListener("beforeunload", saveScroll);
+    return () => {
+      saveScroll(); // ページ遷移時にも保存
+      window.removeEventListener("beforeunload", saveScroll);
+    };
+  }, [setScrollY]);
 
   return (
     <>
