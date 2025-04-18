@@ -1,10 +1,10 @@
 import { useRouter } from "next/router";
 
-const PrevButton = () => {
+const PrevButton = ({ className }) => {
   const router = useRouter();
 
   return (
-    <div className="px-7 md:px-20 lg:px-32 py-5">
+    <div className={`px-7 md:px-20 lg:px-32 py-5 ${className}`}>
       <button
         onClick={() => router.back()}
         className="btn-base text-xl md:text-2xl flex items-center"
