@@ -1,63 +1,19 @@
 import Link from "next/link";
-import { useRouter } from "next/router";
 import { useCallback, useEffect, useRef, useState } from "react";
-import AnimatedText from "src/compornents/AnimatedText";
+import BackToTopButton from "src/compornents/BackToTopButton";
 import CommonLayout from "src/compornents/layout/CommonLayout";
 import MainLayout from "src/compornents/layout/MainLayout";
+import useScrollRestoration from "src/hooks/useScrollRestoration";
 import { getBlogList, getCategoryList } from "src/libs/microcms";
 import useBlogStore from "src/store/useBlogStore";
 
 export default function Blog({ data, category }) {
-  const router = useRouter();
-  const [loading, setLoading] = useState(false);
   const observerRef = useRef();
+  const [loading, setLoading] = useState(false);
+  useScrollRestoration("blog_scrollY");
 
-  const {
-    blogs,
-    offset,
-    isEnd,
-    scrollY,
-    setScrollY,
-    initBlogs,
-    addBlogs,
-    initialized,
-  } = useBlogStore();
-
-  useEffect(() => {
-    console.log("初期化状態:", initialized);
-    console.log("scrollY:", scrollY);
-  }, [initialized, scrollY]);
-
-  //scroll値保存処理
-  useEffect(() => {
-    const handleRouteChangeStart = () => {
-      const currentY = window.scrollY;
-      setScrollY(currentY);
-      sessionStorage.setItem("scrollY", currentY);
-    };
-
-    router.events.on("routeChangeStart", handleRouteChangeStart);
-    return () => {
-      router.events.off("routeChangeStart", handleRouteChangeStart);
-    };
-  }, [router, setScrollY]);
-
-  // 復元処理（一覧ページに戻ったとき）
-  useEffect(() => {
-    if (!router.isReady) return; // ルーター準備できてないなら待つ
-
-    const savedY = sessionStorage.getItem("scrollY");
-    if (savedY !== null) {
-      const y = parseInt(savedY, 10);
-      setScrollY(y);
-      // Hydration後 & レンダリング後にスクロール
-      requestAnimationFrame(() => {
-        setTimeout(() => {
-          window.scrollTo(0, y);
-        }, 0); // 必要であれば 0 → 50 くらいに増やす
-      });
-    }
-  }, [router.isReady, setScrollY]);
+  const { blogs, offset, isEnd, initBlogs, addBlogs, initialized } =
+    useBlogStore();
 
   // 初回のみストアに初期データをセット
   useEffect(() => {
@@ -100,23 +56,10 @@ export default function Blog({ data, category }) {
     };
   }, [fetchMore, loading, isEnd]);
 
-  // ページ離脱時にスクロール位置を保存
-  useEffect(() => {
-    const saveScroll = () => {
-      setScrollY(window.scrollY);
-    };
-    window.addEventListener("beforeunload", saveScroll);
-    return () => {
-      saveScroll(); // ページ遷移時にも保存
-      window.removeEventListener("beforeunload", saveScroll);
-    };
-  }, [setScrollY]);
-
   return (
     <>
       <CommonLayout>
         <MainLayout className="py-20">
-          <AnimatedText text="Keep Learning, Keep Blogging" />
           <ul className="max-w-2xl mx-auto pb-8 flex flex-wrap gap-2 md:gap-3 justify-center">
             {category.map((category) => (
               <li
@@ -146,6 +89,7 @@ export default function Blog({ data, category }) {
             <div ref={observerRef} className="h-10" />
             {loading && <p>Loading...</p>}
           </div>
+          <BackToTopButton />
         </MainLayout>
       </CommonLayout>
     </>
