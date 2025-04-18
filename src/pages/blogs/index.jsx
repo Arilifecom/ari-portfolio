@@ -9,7 +9,7 @@ export default function Blog({ data, category }) {
   const [blogs, setBlogs] = useState(data);
   const [offset, setOffset] = useState(data.length);
   const [loading, setLoading] = useState(false);
-  const [isEnd, setIsEnd] = useState(false);
+  const [isEnd, setIsEnd] = useState(data.length < 10);
   const observerRef = useRef();
 
   const fetchMore = useCallback(async () => {
@@ -100,5 +100,6 @@ export const getStaticProps = async () => {
       data: data.contents,
       category: categoryData.contents,
     },
+    revalidate: 30,
   };
 };
