@@ -75,11 +75,7 @@ const CategoryPage = ({ data, category }) => {
 
   return (
     <>
-      <div className="px-7 md:px-20 lg:px-32 py-5">
-        <a href="/blogs" className="btn-base text-xl md:text-2xl">
-          Prev
-        </a>
-      </div>
+      <PrevButton />
       <MainLayout className="py-20 min-h-screen">
         <h1 className="font-mont font-bold text-center text-5xl md:text-6xl lg:text-7xl mb-8">
           {category.name}
