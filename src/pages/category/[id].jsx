@@ -4,7 +4,6 @@ import Footer from "src/compornents/Footer";
 import { AriIcon, TagIcon } from "src/compornents/Icons";
 import MainLayout from "src/compornents/layout/MainLayout";
 import PrevButton from "src/compornents/PrevButton";
-import useScrollRestoration from "src/hooks/useScrollRestoration";
 import { client, getCategoryDetail, getCategoryList } from "src/libs/microcms";
 
 const CategoryPage = ({ data, category }) => {
@@ -14,7 +13,6 @@ const CategoryPage = ({ data, category }) => {
   const [loading, setLoading] = useState(false);
   const [isEnd, setIsEnd] = useState(data.length < 10);
   const observerRef = useRef();
-  useScrollRestoration("blog_scrollY");
 
   const fetchMore = useCallback(async () => {
     if (loading || isEnd) return;
