@@ -10,7 +10,7 @@ import useBlogStore from "src/store/useBlogStore";
 export default function Blog({ data, category }) {
   const observerRef = useRef();
   const [loading, setLoading] = useState(false);
-  useScrollRestoration("blog_scrollY");
+  useScrollRestoration();
 
   const { blogs, offset, isEnd, initBlogs, addBlogs, initialized } =
     useBlogStore();
