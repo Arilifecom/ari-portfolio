@@ -11,10 +11,11 @@ import {
 } from "framer-motion";
 import Link from "next/link";
 import useScrollRestoration from "src/hooks/useScrollRestoration";
+import BackToTopButton from "src/compornents/BackToTopButton";
 
 export default function Project() {
   const containerRef = useRef(null);
-  useScrollRestoration();
+  useScrollRestoration("scrollY");
 
   const { scrollYProgress } = useScroll({
     target: containerRef,
@@ -101,6 +102,7 @@ export default function Project() {
             style={{ scaleX }}
           />
         </div>
+        <BackToTopButton />
       </CommonLayout>
     </>
   );
