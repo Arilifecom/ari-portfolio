@@ -17,8 +17,8 @@ export default function Home() {
               className="xl:text-left xl:text-[80px]"
             />
             <AnimatedBtn
-              text="Ariについて"
-              className="text-center my-6 xl:text-left"
+              text="ARIについて"
+              className="text-center my-6 xl:text-left font-mont"
               link="/about"
             />
           </div>

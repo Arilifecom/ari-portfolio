@@ -61,7 +61,7 @@ function AnimatedBtn({ text = "", className, link = "" }) {
   return (
     <div ref={scope} className={className}>
       <a
-        onClick={onButtonClick}
+        onMouseEnter={onButtonClick}
         href={link}
         className="relative inline-block rounded-full border-2 border-dark bg-dark px-6 py-2 text-lg md:text-xl text-light font-bold transition-colors hover:bg-bg_primary hover:text-dark"
       >
