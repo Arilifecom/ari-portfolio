@@ -1,9 +1,13 @@
 import React from "react";
 import MainLayout from "src/compornents/layout/MainLayout";
 import projects from "/public/data/projects.json";
-import { motion } from "framer-motion";
 import Footer from "src/compornents/Footer";
-import { ChallengeIcon, PointIcon, WhyIcon } from "src/compornents/Icons";
+import {
+  ChallengeIcon,
+  GithubIcon,
+  PointIcon,
+  WhyIcon,
+} from "src/compornents/Icons";
 import Card from "src/compornents/Card";
 import PrevButton from "src/compornents/PrevButton";
 
@@ -38,23 +42,35 @@ const ProjectDetail = ({ project }) => {
           </span>
           {project.title}
         </h1>
-        <div className="flex flex-col items-center justify-center gap-8 md:flex-row">
+        <div className="flex flex-col items-center justify-center gap-8 md:flex-row mb-16">
           <div>
             <Card
-              className="max-w-[400px] mx-auto my-8 lg:my-12 xl:my-16"
+              className="max-w-[400px] mb-0 mx-auto my-8 lg:my-12 xl:my-16"
               title={project.title}
               imgeUrl={project.ProjectImge}
               imgeclassName="border-2"
             />
           </div>
-          <div>
-            <a
-              target="blank"
-              href={project.siteUrl}
-              className="btn-base bg-[#FFD803] text-dark w-52 py-4 hover:shadow-lg	"
-            >
-              サイトへ行く
-            </a>
+          <div className="flex flex-col justify-center gap-8">
+            <div className="max-w-[400px]">
+              {project.projectDsc.split("\n").map((line, index) => (
+                <p key={index} className="text-sm p-0 md:text-base mb-1">
+                  {line}
+                </p>
+              ))}
+            </div>
+            <div className="flex items-center gap-4">
+              <a
+                target="blank"
+                href={project.siteUrl}
+                className="btn-base bg-[#FFD803] text-sm text-dark w-40 py-4 hover:shadow-lg"
+              >
+                サイトへ行く
+              </a>
+              <a href={project.gitUrl} target="blank">
+                <GithubIcon className="w-10 hover:animate-sway" />
+              </a>
+            </div>
           </div>
         </div>
         <div className="w-full bg-pattern h-6 mb-10 xl:mb-24" />
