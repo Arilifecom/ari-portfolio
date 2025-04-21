@@ -1,7 +1,6 @@
 import { motion, useMotionValueEvent, useScroll } from "motion/react";
 import { useEffect, useRef, useState } from "react";
 import {
-  AriwowIcon,
   BlueStarIcon,
   GreenCircleIcon,
   GreenWaveIcon,
@@ -10,23 +9,29 @@ import {
   YellowCircleIcon,
 } from "src/compornents/Icons";
 
-const AnimatedLine = ({ lineRef }) => {
+const AnimatedLine = () => {
   const containerRef = useRef(null);
   const pathRef = useRef(null);
   const [size, setSize] = useState({ width: 0, height: 0 });
   const [point, setPoint] = useState({ x: 0, y: 0 });
 
   useEffect(() => {
-    if (containerRef.current) {
-      setSize({
-        width: containerRef.current.offsetWidth,
-        height: containerRef.current.offsetHeight - 120,
-      });
-    }
+    const handleResize = () => {
+      if (containerRef.current) {
+        setSize({
+          width: containerRef.current.offsetWidth,
+          height: containerRef.current.offsetHeight - 120,
+        });
+      }
+    };
+
+    handleResize(); // 初回呼び出し
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
   }, []);
 
   const { scrollYProgress } = useScroll({
-    target: lineRef,
+    target: containerRef,
     offset: ["start center", "end center"],
   });
 
@@ -37,7 +42,6 @@ const AnimatedLine = ({ lineRef }) => {
       const point = path.getPointAtLength(totalLength * latest);
 
       setPoint({ x: point.x, y: point.y });
-      console.log("X:", point.x, "Y:", point.y);
     }
   });
 
@@ -122,6 +126,8 @@ const AnimatedLine = ({ lineRef }) => {
           viewBox="0 0 73 77"
           style={{
             transform: `translate(${point.x}px, ${point.y}px)`,
+            opacity: scrollYProgress.get() > 0.01 ? 1 : 0, // ← ここ追加
+            transition: "opacity 0.5s ease",
           }}
         >
           <path

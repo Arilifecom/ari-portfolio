@@ -74,7 +74,7 @@ function WorkExperience({ className }) {
         ref={lineRef}
         className="relative xl:grid xl:grid-cols-2 mx-auto items-start mb-96"
       >
-        <ul className="w-full flex items-start justify-between flex-col gap-32 pb-56">
+        <ul className="w-full flex items-start justify-between flex-col gap-32 pb-48">
           {experiences.map((experience) => (
             <Experience key={experience.title} {...experience} />
           ))}
