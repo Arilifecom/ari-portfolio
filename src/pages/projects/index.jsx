@@ -10,9 +10,11 @@ import {
   useTransform,
 } from "framer-motion";
 import Link from "next/link";
+import useScrollRestoration from "src/hooks/useScrollRestoration";
 
 export default function Project() {
   const containerRef = useRef(null);
+  useScrollRestoration();
 
   const { scrollYProgress } = useScroll({
     target: containerRef,
