@@ -3,13 +3,9 @@ import MainLayout from "src/compornents/layout/MainLayout";
 import projects from "/public/data/projects.json";
 import { motion } from "framer-motion";
 import Footer from "src/compornents/Footer";
-import {
-  AriHelloIcon,
-  ChallengeIcon,
-  PointIcon,
-  WhyIcon,
-} from "src/compornents/Icons";
+import { ChallengeIcon, PointIcon, WhyIcon } from "src/compornents/Icons";
 import Card from "src/compornents/Card";
+import PrevButton from "src/compornents/PrevButton";
 
 // 全てのパスを事前に生成
 export async function getStaticPaths() {
@@ -34,26 +30,7 @@ export async function getStaticProps({ params }) {
 const ProjectDetail = ({ project }) => {
   return (
     <>
-      <div className="px-7 md:px-20 lg:px-32 py-5 mb-10">
-        <a href="/projects" className="btn-base text-xl md:text-2xl">
-          <svg
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M11 6L5 12L11 18M18 6L12 12L18 18"
-              stroke="#E6E6E6"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            />
-          </svg>
-          Prev
-        </a>
-      </div>
+      <PrevButton />
       <MainLayout className="pb-128 pt-4 md:p-20 md:pt-20 lg:p-32 lg:pt-12 xl:pb-256 xl:px-40">
         <h1 className="text-xl md:text-2xl font-bold px-2">
           <span className="text-pink font-mont font-black text-4xl md:text-5xl mr-3">
