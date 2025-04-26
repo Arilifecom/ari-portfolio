@@ -23,9 +23,6 @@ const useBlogStore = create((set) => ({
       offset: state.offset + newBlogs.length,
       isEnd: newBlogs.length === 0,
     })),
-
-  // スクロール位置保存
-  setScrollY: (y) => set({ scrollY: y }),
 }));
 
 export default useBlogStore;
