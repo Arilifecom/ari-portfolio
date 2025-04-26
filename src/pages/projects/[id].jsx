@@ -95,7 +95,7 @@ const ProjectDetail = ({ project }) => {
               <PointIcon className="w-24 md:w-32" />
             </div>
             {project.focusPoints.map((point, index) => (
-              <div key={index}>
+              <div key={index} className="mb-10">
                 <h3 className="title-large-blue">{point.focus}</h3>
                 {point.focusText.split("\n").map((line, i) => (
                   <p key={i} className="text-sm md:text-base mb-4">
@@ -117,22 +117,26 @@ const ProjectDetail = ({ project }) => {
               <div key={index} className="flex flex-col lg:w-1/2">
                 <h3 className="title-large-blue mb-3">{point.challenge}</h3>
                 <div>
-                  <p className="bg-dark text-bg_white inline-block py-1 px-2 text-sm mb-2">
+                  <p className="bg-[#FF8C42]/10 border-[1px] rounded-8 border-[#FF8C42] text-[#FF8C42] inline-block py-1 px-2 text-sm mb-2">
                     課題
                   </p>
-                  {point.challengeText.split("\n").map((line, i) => (
-                    <p key={i} className="text-sm md:text-base mb-4">
-                      {line}
-                    </p>
-                  ))}
-                  <p className="bg-dark text-bg_white inline-block py-1 px-2 text-sm mb-2">
+                  <div className="mb-10">
+                    {point.challengeText.split("\n").map((line, i) => (
+                      <p key={i} className="text-sm md:text-base mb-4">
+                        {line}
+                      </p>
+                    ))}
+                  </div>
+                  <p className="bg-[#2ECC71]/10 border-[1px] rounded-8 border-[#2ECC71] text-[#2ECC71] inline-block py-1 px-2 text-sm mb-2">
                     解決
                   </p>
-                  {point.solution.split("\n").map((line, i) => (
-                    <p key={i} className="text-sm md:text-base mb-4">
-                      {line}
-                    </p>
-                  ))}
+                  <div>
+                    {point.solution.split("\n").map((line, i) => (
+                      <p key={i} className="text-sm md:text-base mb-4">
+                        {line}
+                      </p>
+                    ))}
+                  </div>
                 </div>
               </div>
             ))}

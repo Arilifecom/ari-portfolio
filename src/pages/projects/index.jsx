@@ -62,10 +62,10 @@ export default function Project() {
                   <div>
                     <Link ref={liRef} href={`/projects/${project.id}`}>
                       <Card
-                        className="max-w-[400px] mx-auto mb-12"
+                        className="max-w-[400px] mx-auto mb-12 "
                         title={project.title}
                         imgeUrl={project.ProjectImge}
-                        imgeclassName="border-2"
+                        imgeclassName="border-2 rounded-8"
                       />
                       <motion.div
                         style={{ y }}
