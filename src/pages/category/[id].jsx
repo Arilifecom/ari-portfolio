@@ -131,6 +131,7 @@ export const getStaticProps = async (context) => {
     endpoint: "blogs",
     queries: {
       filters: `category[equals]${id}`,
+      orders: "-publishedAt",
       limit: 10,
     },
   });

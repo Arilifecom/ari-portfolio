@@ -8,6 +8,7 @@ export default async function handler(req, res) {
     const data = await getBlogList({
       offset: Number(offset),
       limit: Number(limit),
+      orders: "-publishedAt",
     });
 
     res.status(200).json(data.contents);
