@@ -11,6 +11,7 @@ export const getBlogList = async (queries = {}) => {
     endpoint: "blogs",
     queries: {
       fields: "id,title,publishedAt",
+      orders: "-publishedAt",
       ...queries,
     },
   });
@@ -58,6 +59,7 @@ export const getTagList = async (queries = {}) => {
     endpoint: "tags",
     queries: {
       fields: "id,name",
+      orders: "-publishedAt",
       ...queries,
     },
   });
