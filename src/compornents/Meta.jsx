@@ -4,7 +4,7 @@ export default function Meta({ title, description, image }) {
   const siteTitle = "Ari's Portfolio";
   const metaTitle = title ? `${title} | ${siteTitle}` : siteTitle;
   const metaDescription = description || "Ari's Portfolio.";
-  const metaImage = image || "/default-image.jpg";
+  const metaImage = image || "/arisPortfolio.png";
 
   return (
     <Head>

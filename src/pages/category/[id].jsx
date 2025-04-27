@@ -3,6 +3,7 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import Footer from "src/compornents/Footer";
 import { AriIcon, TagIcon } from "src/compornents/Icons";
 import MainLayout from "src/compornents/layout/MainLayout";
+import Meta from "src/compornents/Meta";
 import PrevButton from "src/compornents/PrevButton";
 import { client, getCategoryDetail, getCategoryList } from "src/libs/microcms";
 
@@ -73,6 +74,11 @@ const CategoryPage = ({ data, category }) => {
 
   return (
     <>
+      <Meta
+        title={`${category.name}に該当する記事一覧ページ`}
+        description={`学習したプログラミング記事が「${category.name}」のカテゴリーにまとめられています。初心者が実際にコードを書きながら学んでいる内容を記載しています。`}
+      />
+
       <PrevButton />
       <MainLayout className="py-20 min-h-screen">
         <h1 className="font-mont font-bold text-center text-5xl md:text-6xl lg:text-7xl mb-8">

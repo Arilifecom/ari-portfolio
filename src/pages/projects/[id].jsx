@@ -10,6 +10,7 @@ import {
 } from "src/compornents/Icons";
 import Card from "src/compornents/Card";
 import PrevButton from "src/compornents/PrevButton";
+import Meta from "src/compornents/Meta";
 
 // 全てのパスを事前に生成
 export async function getStaticPaths() {
@@ -34,6 +35,11 @@ export async function getStaticProps({ params }) {
 const ProjectDetail = ({ project }) => {
   return (
     <>
+      <Meta
+        title={`「${project.title}」の詳細ページ`}
+        description={project.projectDsc}
+        image={project.ProjectImge}
+      />
       <PrevButton />
       <MainLayout className="pb-128 pt-4 md:p-20 md:pt-20 lg:p-32 lg:pt-12 xl:pb-256 xl:px-40">
         <h1 className="text-xl md:text-2xl font-bold px-2">
@@ -59,6 +65,7 @@ const ProjectDetail = ({ project }) => {
                 </p>
               ))}
             </div>
+            <p>制作期間：{project.timeSpent}</p>
             <div className="flex items-center gap-4">
               <a
                 target="blank"

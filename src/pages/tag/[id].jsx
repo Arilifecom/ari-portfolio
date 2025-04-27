@@ -3,6 +3,7 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import Footer from "src/compornents/Footer";
 import { AriIcon } from "src/compornents/Icons";
 import MainLayout from "src/compornents/layout/MainLayout";
+import Meta from "src/compornents/Meta";
 import PrevButton from "src/compornents/PrevButton";
 import useScrollRestoration from "src/hooks/useScrollRestoration";
 import { client, getTagDetail, getTagList } from "src/libs/microcms";
@@ -72,6 +73,11 @@ const TagPage = ({ blog: initialBlog, tag }) => {
 
   return (
     <>
+      <Meta
+        title={`${tag.name}に該当する記事一覧ページ`}
+        description={`学習したプログラミング記事が「${tag.name}」のタグにまとめられています。初心者が実際にコードを書きながら学んでいる内容を記載しています。`}
+      />
+
       <PrevButton />
       <MainLayout className="py-20 min-h-screen">
         <h1 className="font-mont font-bold text-center text-5xl md:text-6xl lg:text-7xl mb-8 md:mb-16">

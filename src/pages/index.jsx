@@ -8,7 +8,7 @@ import Meta from "src/compornents/Meta";
 export default function Home() {
   return (
     <>
-      <Meta description="独学のフロントエンド開発・Web制作者Ariのポートフォリオサイトです。" />
+      <Meta description="未経験からフロントエンドエンジニアを目指す、Ariの就職活動に向けたポートフォリオサイトです。制作したプロジェクトの詳細や、学習記録を掲載しています。" />
       <CommonLayout>
         <MainLayout className="h-[90vh] flex flex-col items-start md:gap-8 lg:gap-6 xl:flex-row-reverse">
           <div className="xl:w-1/2">

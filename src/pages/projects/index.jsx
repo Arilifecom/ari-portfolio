@@ -12,6 +12,7 @@ import {
 import Link from "next/link";
 import useScrollRestoration from "src/hooks/useScrollRestoration";
 import BackToTopButton from "src/compornents/BackToTopButton";
+import Meta from "src/compornents/Meta";
 
 export default function Project() {
   const containerRef = useRef(null);
@@ -43,6 +44,13 @@ export default function Project() {
 
   return (
     <>
+      <Meta
+        title={"プロジェクト一覧"}
+        description={
+          "これまで制作してきたプロジェクトの一覧です。新しい技術やツールを学びながら完成させた作品を紹介しています。"
+        }
+      />
+
       <CommonLayout>
         <div className=" bg-light w-full z-0 border-t-4 border-solid border-dark px-5 pb-24 lg:pb-64">
           <div ref={containerRef}>

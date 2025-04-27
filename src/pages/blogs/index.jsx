@@ -3,6 +3,7 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import BackToTopButton from "src/compornents/BackToTopButton";
 import CommonLayout from "src/compornents/layout/CommonLayout";
 import MainLayout from "src/compornents/layout/MainLayout";
+import Meta from "src/compornents/Meta";
 import useScrollRestoration from "src/hooks/useScrollRestoration";
 import { getBlogList, getCategoryList } from "src/libs/microcms";
 import useBlogStore from "src/store/useBlogStore";
@@ -58,6 +59,12 @@ export default function Blog({ data, category }) {
 
   return (
     <>
+      <Meta
+        title={"学習ブログ記事一覧"}
+        description={
+          "プログラミング初心者の私がフロントエンドエンジニアになるために、試行錯誤しながら０から学んできたことをアウトプットしていくブログです。"
+        }
+      />
       <CommonLayout>
         <MainLayout className="py-20">
           <ul className="max-w-2xl mx-auto pb-8 flex flex-wrap gap-2 md:gap-3 justify-center">

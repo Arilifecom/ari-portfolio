@@ -4,10 +4,12 @@ import formatRichText from "src/libs/utils";
 import styles from "src/styles/blogDetail.module.css";
 import "highlight.js/styles/atom-one-dark.css";
 import PrevButton from "src/compornents/PrevButton";
+import Meta from "src/compornents/Meta";
 
 export default function BlogDetail({ data }) {
   return (
     <>
+      <Meta title={data.title} description={data.description} />
       <PrevButton />
       <main className={styles.main}>
         <div className="pt-10"></div>
