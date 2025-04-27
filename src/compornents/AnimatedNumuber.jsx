@@ -58,7 +58,7 @@ const AnimatedNumber = ({ className }) => {
       <div className="flex flex-col justify-center text-center">
         <span className="inline-block text-4xl md:h-16 md:text-6xl">
           <AnimatedNumbers
-            value={4}
+            value={3}
             sparkleColor="#45CAE0"
             className={"w-2 md:w-3"}
           />
