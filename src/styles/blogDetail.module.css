@@ -16,7 +16,7 @@
 
 .title {
   max-width: 720px;
-  font-size: 2.4rem;
+  font-size: 1.8rem;
   margin-bottom: 24px;
   text-align: center;
   font-weight: bold;
@@ -49,12 +49,6 @@
 
 .content *:first-child {
   margin-top: 0;
-}
-
-.content > h1 {
-  font-size: 2rem;
-  font-weight: 700;
-  margin-bottom: 1.25rem;
 }
 
 .content > h2 {
