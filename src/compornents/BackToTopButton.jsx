@@ -20,11 +20,11 @@ const BackToTopButton = () => {
   return isVisible ? (
     <button
       onClick={scrollToTop}
-      className="fixed bottom-12 md:bottom-8 right-6 p-3 rounded-full bg-blue-600 text-white shadow-lg hover:bg-blue-700 transition"
+      className="fixed bottom-12 md:bottom-8 right-6 p-3 rounded-full text-white shadow-lg hover:bg-blue/20 transition"
       aria-label="ページトップへ戻る"
     >
       <TopIcon className="w-8" />
-      <AriIcon className="w-8 h-8" />
+      TOP
     </button>
   ) : null;
 };
