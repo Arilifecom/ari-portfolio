@@ -17,7 +17,8 @@ export default function About() {
       <CommonLayout>
         <MainLayout>
           <div className="grid justify-center gap-10 md:gap-14 xl:grid-cols-12 xl:grid-rows-5 xl:gap-8 mb-128 md:mb-256">
-            <div className="px-3 xl:py-5 xl:px-10 flex flex-col items-start justify-start gap-3 md:gap-5 xl:col-span-5 xl:row-span-5">
+            <AnimatedNumber className="xl:col-span-7 xl:col-start-6 xl:row-span-1" />
+            <div className=" px-3 xl:py-5 xl:px-10 flex flex-col items-start justify-start gap-3 md:gap-5 xl:col-span-5 xl:row-span-5 xl:row-start-1">
               <h2 className="text-lg title-large-blue mb-0">About Ari</h2>
               <p>はじめまして。Ariと申します。</p>
               <p>
@@ -36,7 +37,6 @@ export default function About() {
                 これまでの社会人経験を活かし、責任感を持ってチームに貢献できるエンジニアを目指しています。
               </p>
             </div>
-            <AnimatedNumber className="xl:col-span-7 xl:col-start-6 xl:row-span-1" />
             <HelloInteraction className="xl:col-start-6 xl:col-span-7 xl:row-span-4 xl:row-start-2" />
           </div>
           <Skills className="mb-128 md:mb-256" />
