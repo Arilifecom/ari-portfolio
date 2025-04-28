@@ -57,6 +57,14 @@ export default function Blog({ data, category }) {
     };
   }, [fetchMore, loading, isEnd]);
 
+  // ボタンクリックでトップにスクロールする関数
+  function ScrollToTopButton() {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth", // スムーズにスクロール
+    });
+  }
+
   return (
     <>
       <Meta
@@ -94,7 +102,19 @@ export default function Blog({ data, category }) {
               </div>
             ))}
             <div ref={observerRef} className="h-10" />
-            {loading && <p>Loading...</p>}
+            {loading ? (
+              <p>Loading...</p>
+            ) : isEnd ? (
+              <div className="flex gap-2 items-center">
+                <p>すべての記事を表示し終わりました。</p>
+                <button
+                  className="border-b-2 border-blue hover:shadow-lg"
+                  onClick={ScrollToTopButton}
+                >
+                  トップへ戻る
+                </button>
+              </div>
+            ) : null}
           </div>
           <BackToTopButton />
         </MainLayout>
