@@ -87,7 +87,7 @@ const AnimatedCrackerPop = () => {
         className="absolute bottom-0 -left-10 md:left-0 xl:-left-20"
         onAnimationComplete={() => setAnimationComplete(true)}
       >
-        <CrackerIcon className="w-40 md:w-52 xl:w-60" />
+        <CrackerIcon className="w-36 md:w-52 xl:w-60" />
       </motion.div>
 
       {animationComplete && (
