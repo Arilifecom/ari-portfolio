@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { AriIcon, TopIcon } from "src/compornents/Icons";
+import { TopIcon } from "src/compornents/Icons";
 
 const BackToTopButton = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -20,7 +20,7 @@ const BackToTopButton = () => {
   return isVisible ? (
     <button
       onClick={scrollToTop}
-      className="fixed bottom-12 md:bottom-8 right-6 p-3 rounded-full text-white shadow-lg hover:bg-blue/20 transition"
+      className="fixed text-xs bottom-9 right-3 p-3 rounded-full  text-white shadow-lg  transition"
       aria-label="ページトップへ戻る"
     >
       <TopIcon className="w-8" />

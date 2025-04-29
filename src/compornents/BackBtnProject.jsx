@@ -1,12 +1,12 @@
 const BackBtnProject = () => {
   return (
-    <div className="fixed text-xs bottom-32 md:bottom-32 right-6 p-3 rounded-full text-white shadow-lg hover:bg-blue/20 transition">
+    <div className="w-14 h-14 fixed text-xs bottom-10 md:bottom-8 right-2 p-2 rounded-full text-white shadow-lg hover:bg-blue/20 transition z-20">
       <a href="/" className="flex flex-col justify-center items-center">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
-          width="32"
-          height="32"
+          width="22"
+          height="22"
           viewBox="0 0 100 100"
         >
           <path
