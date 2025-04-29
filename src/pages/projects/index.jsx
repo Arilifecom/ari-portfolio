@@ -1,5 +1,5 @@
 import Card from "src/compornents/Card";
-import { useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import projects from "/public/data/projects.json";
 import Link from "next/link";
 import Meta from "src/compornents/Meta";
@@ -8,11 +8,32 @@ import Head from "next/head";
 import useScrollRestoration from "src/hooks/useScrollRestoration";
 import BackBtnProject from "src/compornents/BackBtnProject";
 
+// スマホ判定用フック
+export function useIsMobile() {
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
+
+  return isMobile;
+}
+
+// パララックス用フック
 function useParallax(value, distance) {
   return useTransform(value, [0, 1], [-distance, distance]);
 }
 
+// プロジェクトセクションを作成
 function Image() {
+  const isMobile = useIsMobile();
+
   return (
     <>
       {projects.map((project, index) => {
@@ -48,7 +69,7 @@ function Image() {
             <motion.div
               initial={{ visibility: "hidden" }}
               animate={{ visibility: "visible" }}
-              style={{ y }}
+              style={isMobile ? {} : { y }}
               className="absolute inline-block top-14 md:top-[calc(50%-25px)] md:left-[calc(50%+120px)]"
             >
               <h2 className="text-[#77B255] font-mont font-black text-4xl md:text-5xl xl:text-6xl -tracking-[2px] ">
