@@ -7,6 +7,7 @@ const SosialLinks = () => {
       <motion.a
         href="https://github.com/Arilifecom"
         target="blank"
+        aria-label="AriのGitHubアカウントへ"
         className="w-8 mx-1 lg:nx-3 rounded-full "
         whileHover={{
           scale: 1.3,
@@ -20,6 +21,7 @@ const SosialLinks = () => {
       <motion.a
         href="https://ari-life.com/"
         target="blank"
+        aria-label="Web制作ご案内サイト「ari-life.comの」サイトへ"
         className="w-8 mx-1 lg:nx-3 rounded-full "
         whileHover={{
           scale: 1.3,
@@ -33,6 +35,7 @@ const SosialLinks = () => {
       <motion.a
         href="https://x.com/Sunny_sideupup"
         target="blank"
+        aria-label="AriのXアカウントへ"
         className="w-8 mx-1 lg:nx-3 rounded-full "
         whileHover={{
           scale: 1.3,
