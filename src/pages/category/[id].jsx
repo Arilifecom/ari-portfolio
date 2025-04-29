@@ -102,7 +102,7 @@ const CategoryPage = ({ data, category }) => {
           {blogs.map((blog) => (
             <div key={blog.id} className="relative z-0">
               <Link legacyBehavior href={`/blogs/${blog.id}`}>
-                <a className="card-base flex items-center justify-between pt-4 pb-4 mb-4 rounded-8">
+                <a className="card-base flex items-center justify-between pt-4 pb-4 mb-4 rounded-8 hover:bg-opacity-70">
                   <h2 className="title-large-bk text-sm md:text-base mr-4">
                     {blog.title}
                   </h2>

@@ -89,7 +89,7 @@ export default function Blog({ data, category }) {
             {blogs.map((blog) => (
               <div key={blog.id} className="relative">
                 <Link legacyBehavior href={`/blogs/${blog.id}`}>
-                  <a className="card-base flex items-center justify-between pt-4 pb-4 mb-4 rounded-8">
+                  <a className="card-base flex items-center justify-between pt-4 pb-4 mb-4 rounded-8 hover:bg-opacity-70">
                     <h2 className="title-large-bk text-sm md:text-base mr-4">
                       {blog.title}
                     </h2>
@@ -103,9 +103,9 @@ export default function Blog({ data, category }) {
             ))}
             <div ref={observerRef} className="h-10" />
             {loading ? (
-              <p>Loading...</p>
+              <p className="text-center">Loading...</p>
             ) : isEnd ? (
-              <div className="flex gap-2 items-center">
+              <div className="flex flex-col md:flex-row gap-4 md:gap-2 items-center justify-center">
                 <p>すべての記事を表示し終わりました。</p>
                 <button
                   className="border-b-2 border-blue hover:shadow-lg"
