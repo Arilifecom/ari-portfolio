@@ -10,12 +10,12 @@
       "HTML",
       "CSS",
       "JavaScript",
-      "GSAPP(ScrollTrigger/ScrollTo)",
+      "GSAPP(アニメーション)",
       "PHP(コンタクトフォーム)",
-      "Composer",
+      "phpdotenv",
       "Bootstrap(コンタクトフォーム)",
-      "Figma(デザイン)",
-      "GitHub Actions(テスト環境デプロイの自動化)"
+      "Figma",
+      "GitHub Actions(テスト環境)"
     ],
     "projectDsc": "自身のWeb制作受注用のコーポレートサイトです。\nHTMLとCSS、JavaScriptで制作された静的サイトです。\nお問い合わせフォームはPHPで自作で制作しております。reCAPTCHAのv3を導入し、スパム対策やセキュリティ対策を考慮しました。",
     "timeSpent": "14日間",
@@ -53,7 +53,7 @@
       "JavaScript",
       "Tailwind CSS",
       "Framer Motion(アニメーション)",
-      "Figma(デザイン)",
+      "Figma",
       "Vercel(デプロイ)"
     ],
     "projectDsc": "日本円とオーストラリアドルの為替を自動取得して、目標金額までの残金などを確認できる計算サイトです。\n外部APIで為替データを取得して、サイト内の自動計算に使用しています。",
@@ -97,7 +97,7 @@
       "Tailwind CSS",
       "MicroCMS",
       "Framer Motion(アニメーション)",
-      "Figma(デザイン)",
+      "Figma",
       "Vercel(デプロイ)"
     ],
     "projectDsc": "自身のポートフォリオサイトです。\nNext.jsとMicroCMSを導入し、学習ブログとしても運用しています。\nまた、今後コンテンツが増えることを見越して、拡張性を意識したコーディングを心がけました。",
