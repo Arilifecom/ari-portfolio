@@ -25,30 +25,32 @@ const Header = () => {
 
   return (
     <header className="fixed font-mont left-0 bottom-0 z-10 md:static md:z-0 md:w-full">
-      <nav className="nav-style md:nav-style-md">
-        {sortedNavItems.map((item, index) => (
-          <li
-            key={item.href}
-            className={`bg-[#FFFAF2] ${
-              index === 0
-                ? "li-main-style md:li-main-style-md"
-                : index === 1
-                ? "li-child1-style md:li-child1-style-md"
-                : index === 2
-                ? "li-child2-style md:li-child2-style-md"
-                : "li-child3-style md:li-child3-style-md"
-            }`}
-          >
-            <a href={item.href}>{item.label}</a>
-            <div
-              className={`${
+      <nav>
+        <ul className="nav-style md:nav-style-md">
+          {sortedNavItems.map((item, index) => (
+            <li
+              key={item.href}
+              className={`bg-[#FFFAF2] ${
                 index === 0
-                  ? "li-main-style-line md:li-main-style-line-md"
-                  : "li-child-style-line"
+                  ? "li-main-style md:li-main-style-md"
+                  : index === 1
+                  ? "li-child1-style md:li-child1-style-md"
+                  : index === 2
+                  ? "li-child2-style md:li-child2-style-md"
+                  : "li-child3-style md:li-child3-style-md"
               }`}
-            />
-          </li>
-        ))}
+            >
+              <a href={item.href}>{item.label}</a>
+              <div
+                className={`${
+                  index === 0
+                    ? "li-main-style-line md:li-main-style-line-md"
+                    : "li-child-style-line"
+                }`}
+              />
+            </li>
+          ))}
+        </ul>
       </nav>
     </header>
   );
