@@ -2,7 +2,6 @@ import Card from "src/compornents/Card";
 import { useRef } from "react";
 import projects from "/public/data/projects.json";
 import Link from "next/link";
-import BackToTopButton from "src/compornents/BackToTopButton";
 import Meta from "src/compornents/Meta";
 import { motion, useScroll, useSpring, useTransform } from "motion/react";
 import Head from "next/head";
@@ -18,9 +17,7 @@ function Image() {
     <>
       {projects.map((project, index) => {
         const ref = useRef(null);
-        const { scrollYProgress } = useScroll({
-          target: ref,
-        });
+        const { scrollYProgress } = useScroll({ target: ref });
         const y = useParallax(scrollYProgress, 300);
 
         return (
@@ -28,37 +25,39 @@ function Image() {
             key={index}
             className="relative h-screen flex flex-col items-center justify-center snap-center"
           >
-            <div ref={ref} className="flex flex-col">
+            <div ref={ref} className="overflow-hidden">
               <Link href={`/projects/${project.id}`}>
                 <Card
-                  className="max-w-[500px] mx-auto mb-12"
+                  className="w-[85%] md:w-[500px] mx-auto p-6 pb-3 mb-3 md:mb-12 "
                   title={project.title}
                   imgeUrl={project.ProjectImge}
                   imgeclassName="border-2 rounded-8"
                 />
-                <motion.div
-                  style={{ y }}
-                  className="absolute inline-block top-10  md:top-[calc(50%-25px)] md:left-[calc(50%+120px)]"
-                >
-                  <h2 className="text-[#77B255] font-mont font-black text-4xl md:text-5xl xl:text-6xl -tracking-[2px] ">
-                    #{project.titleNumber}
-                  </h2>
-                  <span className="block font-bold text-center text-sm bg-[#FFD803] rounded-8 p-2 text-dark font-noto">
-                    {project.siteType}
-                  </span>
-                </motion.div>
               </Link>
-              <ul className="flex flex-wrap gap-2 px-4 md:max-w-xl xl:max-w-2xl mx-auto">
+              <ul className="flex flex-wrap gap-1 md:gap-2 md:px-4 md:max-w-xl xl:max-w-2xl mx-auto">
                 {project.techStack.map((tec, i) => (
                   <li
                     key={i}
-                    className="btn-base text-sm font-medium md:text-base text-left"
+                    className="btn-base text-xs rounded-4 py-2 px-3 bg-[#F3F2F2] text-dark font-medium md:text-base text-left z-0"
                   >
                     {tec}
                   </li>
                 ))}
               </ul>
             </div>
+            <motion.div
+              initial={{ visibility: "hidden" }}
+              animate={{ visibility: "visible" }}
+              style={{ y }}
+              className="absolute inline-block top-14 md:top-[calc(50%-25px)] md:left-[calc(50%+120px)]"
+            >
+              <h2 className="text-[#77B255] font-mont font-black text-4xl md:text-5xl xl:text-6xl -tracking-[2px] ">
+                #{project.titleNumber}
+              </h2>
+              <span className="block font-bold text-center text-sm bg-[#FFD803] rounded-8 p-2 text-dark font-noto">
+                {project.siteType}
+              </span>
+            </motion.div>
           </section>
         );
       })}
@@ -69,9 +68,7 @@ function Image() {
 export default function Project() {
   useScrollRestoration("scrollY");
 
-  const { scrollYProgress } = useScroll({
-    offset: ["start start", "end end"],
-  });
+  const { scrollYProgress } = useScroll();
   const scaleX = useSpring(scrollYProgress, {
     stiffness: 100,
     damping: 30,
@@ -96,7 +93,6 @@ export default function Project() {
         className="bg-[#BAE8E8] h-2 fixed left-0 right-0 bottom-[20px] md:bottom-6 xl:bottom-10 scale-x-0"
         style={{ scaleX }}
       />
-      <BackToTopButton />
       <BackBtnProject />
     </>
   );
