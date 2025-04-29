@@ -48,8 +48,8 @@ const ProjectDetail = ({ project }) => {
           </span>
           {project.title}
         </h1>
-        <div className="flex flex-col items-center justify-center gap-8 md:flex-row mb-16">
-          <div>
+        <div className="flex flex-col items-center justify-center gap-8 md:gap-12 md:flex-row mb-16">
+          <div className="z-0">
             <Card
               className="max-w-[400px] mb-0 mx-auto my-8 lg:my-12 xl:my-16"
               title={project.title}

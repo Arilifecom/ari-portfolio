@@ -44,12 +44,12 @@ function Image() {
         return (
           <section
             key={index}
-            className="relative h-screen flex flex-col items-center justify-center snap-center"
+            className="relative h-screen flex flex-col items-center justify-center snap-center z-0"
           >
             <div ref={ref} className="overflow-hidden">
               <Link href={`/projects/${project.id}`}>
                 <Card
-                  className="w-[85%] md:w-[500px] mx-auto p-6 pb-3 mb-3 md:mb-12 "
+                  className="w-[85%] md:w-[500px] mx-auto p-6 pb-3 mb-5 md:mb-12"
                   title={project.title}
                   imgeUrl={project.ProjectImge}
                   imgeclassName="border-2 rounded-8"
@@ -70,7 +70,7 @@ function Image() {
               initial={{ visibility: "hidden" }}
               animate={{ visibility: "visible" }}
               style={isMobile ? {} : { y }}
-              className="absolute inline-block top-14 md:top-[calc(50%-25px)] md:left-[calc(50%+120px)]"
+              className="absolute inline-block top-0 pt-10 md:pt-0 md:top-[calc(50%-25px)] md:left-[calc(50%+120px)]"
             >
               <h2 className="text-[#77B255] font-mont font-black text-4xl md:text-5xl xl:text-6xl -tracking-[2px] ">
                 #{project.titleNumber}
@@ -107,7 +107,7 @@ export default function Project() {
       <Head>
         <style>{`html { scroll-snap-type: y mandatory; }`}</style>
       </Head>
-      <div className="bg-[#FFFAF2] w-full z-0 px-5 snap-y snap-mandatory">
+      <div className="bg-[#FFFAF2] w-full px-5 snap-y snap-mandatory">
         <Image />
       </div>
       <motion.div
