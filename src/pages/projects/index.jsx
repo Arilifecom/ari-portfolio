@@ -7,6 +7,7 @@ import { motion, useScroll, useSpring, useTransform } from "motion/react";
 import Head from "next/head";
 import useScrollRestoration from "src/hooks/useScrollRestoration";
 import BackBtnProject from "src/compornents/BackBtnProject";
+import PrevButton from "src/compornents/PrevButton";
 
 // スマホ判定用フック
 export function useIsMobile() {
@@ -115,6 +116,7 @@ export default function Project() {
         style={{ scaleX }}
       />
       <BackBtnProject />
+      <PrevButton className="fixed bottom-12 left-3 px-0 md:px-0 lg:px-0 py-0 z-10" />
     </>
   );
 }
