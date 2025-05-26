@@ -34,6 +34,8 @@ export const getCategoryList = async (queries = {}) => {
     endpoint: "categories",
     queries: {
       fields: "id,name",
+      orders: "-publishedAt",
+      limit: 100,
       ...queries,
     },
   });
@@ -59,6 +61,7 @@ export const getTagList = async (queries = {}) => {
     endpoint: "tags",
     queries: {
       fields: "id,name",
+      limit: 100,
       orders: "-publishedAt",
       ...queries,
     },
