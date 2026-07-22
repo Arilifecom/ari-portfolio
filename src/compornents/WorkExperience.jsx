@@ -3,23 +3,23 @@ import { useRef } from "react";
 import AnimatedLine from "src/compornents/AnimatedLine";
 import AnimatedText from "src/compornents/AnimatedText";
 
-const Experience = ({ title, date, desc }) => {
-  const ref = useRef(null);
+const Experience = (experiences) => {
+  const ref = useRef(null)
 
   const { scrollYProgress } = useScroll({
     target: ref,
-    offset: ["start center", "end start"],
-  });
+    offset: ['start center', 'end start'],
+  })
 
   const boxShadow = useTransform(
     scrollYProgress,
     [0, 0.2, 1], // 進行具合に応じて変化
     [
-      "-5px -5px 10px 0px rgba(255, 255, 255, 0), 5px 5px 10px 0px rgba(0, 0, 0, 0)",
-      "-5px -5px 10px 0px rgba(255, 255, 255, 0.5), 5px 5px 10px 0px rgba(0, 0, 0, 0.3)",
-      "-5px -5px 10px 0px rgba(255, 255, 255, 0), 5px 5px 10px 0px rgba(0, 0, 0, 0)",
+      '-5px -5px 10px 0px rgba(255, 255, 255, 0), 5px 5px 10px 0px rgba(0, 0, 0, 0)',
+      '-5px -5px 10px 0px rgba(255, 255, 255, 0.5), 5px 5px 10px 0px rgba(0, 0, 0, 0.3)',
+      '-5px -5px 10px 0px rgba(255, 255, 255, 0), 5px 5px 10px 0px rgba(0, 0, 0, 0)',
     ]
-  );
+  )
 
   return (
     <motion.li
@@ -29,46 +29,47 @@ const Experience = ({ title, date, desc }) => {
         boxShadow: boxShadow,
       }}
     >
-      <h3 className="title-large-bk">{title}</h3>
-      <p className="title-large-blue">{date}</p>
+      <h3 className="title-large-bk">{experiences.title}</h3>
+      <p className="title-large-blue">{experiences.date}</p>
       <div>
-        {desc.split("\n").map((line, index) => (
+        {experiences.desc.split('\n').map((line, index) => (
           <p key={index} className="text-sm p-0 md:text-base">
             {line}
           </p>
         ))}
+        <a className="mt-4">{experiences.url}</a>
       </div>
     </motion.li>
-  );
-};
+  )
+}
 
 const experiences = [
   {
-    title: "Web制作",
-    date: "2024-現在 | 岩手県",
-    desc: "個人でWeb制作を請け負っています。\nこれから事業を立ち上げる方のWebサイト制作を担当しました。\n制作の流れをご説明したうえで、ZOOMで打ち合わせを重ねながら、デザイン制作・実装・修正対応まで一貫して行っています。\nまた、友人からの依頼でShopifyを用いたECサイト制作も経験。\n個人制作では、Next.jsを用いて開発したWebアプリ「Saving-UP」を完成させました。\n※現在、Web制作の新規受付は停止しています。",
+    title: 'Web制作｜フロントエンド開発',
+    date: '2024 - 現在',
+    desc: '個人でWeb制作を受託。同時に現役のエンジニアによるマンツーマン指導のプログラミングスクールに所属し、Next.jsを用いたオリジナルアプリ「カロリーチ」を開発。その後インターン形式のプロジェクトに参画し、機能開発やAPI連携などのチーム開発を経験。',
   },
   {
-    title: "農業スタッフ",
-    date: "2019-2024 | オーストラリア",
-    desc: "オーストラリアにワーキングホリデーへ行き、主に農業企業の収穫スタッフとして働いておりました。様々な土地で農作物の収穫を行いました。\n単純な作業の中でも、集中力の継続や工夫をすることで、収穫量を増やしたりすることを学びました。\nまた、収穫のみではなく英語でのコミュニケーション力を伸ばすため、スーパーバイザーの補助スタッフの業務にも挑戦しました。",
+    title: '農業スタッフ',
+    date: '2019-2024',
+    desc: '海外で生活してみたいという思いから、オーストラリアへ渡航。主に農業法人で農作物の収穫スタッフとして勤務。多国籍な職場や英語環境での業務を通じて、異なる環境への適応力と継続力を培う。現地で出会ったエンジニアの働き方に刺激を受け、プログラミング学習を開始。',
   },
   {
-    title: "スポーツジム受付",
-    date: "2018-2019 | 広島県",
-    desc: "キッズスクール併用のスポーツジムにて、受付として働いていました。主に新規入会者様へのご案内と契約業務を行なっておりました。\n契約内容の説明や重要事項など、利用者様にとって大切なことは出来る限り分かりやすくお伝えするように口調や指差しなどで注意を払っておりました。",
+    title: 'スポーツジム受付',
+    date: '2018-2019',
+    desc: '入会案内や契約手続きを担当。\n前職で培った接客経験を活かし、契約内容や重要事項を一人ひとりに合わせてご案内。相手の理解度に合わせて伝える力を磨く。',
   },
   {
-    title: "レストランサービス・仲居",
-    date: "2016-2018 | 北海道、淡路島",
-    desc: "全国のリゾート地へ派遣される、派遣スタッフとして働いていました。レストランサービスのウェイターや仲居業務、キッチン補助などの様々な業務を行なっておりました。\n繁忙期の短期での仕事ということもあり、いち早く業務内容を覚え、即戦力になることを大切に取り組んでおりました。\n自分の仕事を覚えるコツを知ることができ、対面でのコミュニケーション力をつけることができました。",
+    title: 'レストランサービス・仲居',
+    date: '2016-2018',
+    desc: '全国のリゾート地でレストランサービスや仲居、キッチン補助など幅広い業務を経験。繁忙期の短期勤務が中心のため、短期間で業務を習得し、新しい環境へ素早く適応する力を身につける。',
   },
   {
-    title: "カスタマーサービス",
-    date: "2012-2016 | 広島県",
-    desc: "家具を販売する会社で、カスタマーサービス部署で正社員として働いていました。電話にてお問い合わせいただく、商品や配送のトラブルを主に解決する役割を行なっておりました。また、カスタマーチームの主任として新人教育やフォローに努めました。\nその他、日々の業務を円滑に行うためマニュアル作りにも力をいれておりました。",
+    title: 'カスタマーサービス',
+    date: '2012-2016',
+    desc: '家具販売会社のカスタマーサービス部門に勤務。\n商品や配送に関する問い合わせ対応に加え、主任として新人教育や業務マニュアルの作成を担当。状況を整理し、最適な解決策を提案する業務に従事。',
   },
-];
+]
 
 function WorkExperience({ className }) {
   const lineRef = useRef(null);

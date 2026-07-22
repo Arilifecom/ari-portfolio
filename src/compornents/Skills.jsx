@@ -1,29 +1,101 @@
-import { motion } from "framer-motion";
-import AnimatedText from "src/compornents/AnimatedText";
+import { motion } from 'framer-motion'
+import AnimatedText from 'src/compornents/AnimatedText'
 import {
-  CssIcon,
+  DrizzleIcon,
   FigmaIcon,
   GithubIcon,
-  HtmlIcon,
-  JavaScriptIcon,
+  HonoIcon,
   NextJsIcon,
-  PhpIcon,
+  ReactIcon,
   TailwindIcon,
-} from "src/compornents/Icons";
+  TanStackIcon,
+  TypeScriptIcon,
+  WordPressIcon,
+} from 'src/compornents/skilsIcon'
 
 const show = {
-  initial: { y: 0, x: 0, opacity: 0 },
-  animate: (i) => ({
+  initial: {
+    y: 16,
+    opacity: 0,
+  },
+  animate: (index) => ({
     y: 0,
-    x: 0,
     opacity: 1,
     transition: {
-      y: { delay: i * 0.2, type: "spring", duration: 1, bounce: 0 },
-      x: { delay: i * 0.2, type: "spring", duration: 1, bounce: 0 },
-      opacity: { delay: i * 0.2, duration: 0.3 },
+      delay: index * 0.08,
+      type: 'spring',
+      duration: 0.8,
+      bounce: 0,
     },
   }),
-};
+}
+
+const skillGroups = [
+  {
+    category: 'Frontend',
+    skills: [
+      {
+        Icon: <TypeScriptIcon className="h-12 w-12" />,
+        title: 'TypeScript',
+      },
+      {
+        Icon: <ReactIcon className="h-12 w-12" />,
+        title: 'React',
+      },
+      {
+        Icon: <NextJsIcon className="h-12 w-12" />,
+        title: 'Next.js',
+      },
+      {
+        Icon: <TanStackIcon className="h-12 w-12" />,
+        title: 'TanStack Router',
+      },
+      {
+        Icon: <TanStackIcon className="h-12 w-12" />,
+        title: 'TanStack Query',
+      },
+      {
+        Icon: <TailwindIcon className="h-12 w-12" />,
+        title: 'Tailwind CSS',
+      },
+    ],
+  },
+  {
+    category: 'Backend / Data',
+    skills: [
+      {
+        Icon: <HonoIcon className="h-12 w-12" />,
+        title: 'Hono',
+      },
+      {
+        Icon: <DrizzleIcon className="h-12 w-12" />,
+        title: 'Drizzle ORM',
+      },
+    ],
+  },
+  {
+    category: 'CMS',
+    skills: [
+      {
+        Icon: <WordPressIcon className="h-12 w-12" />,
+        title: 'WordPress',
+      },
+    ],
+  },
+  {
+    category: 'Tools',
+    skills: [
+      {
+        Icon: <GithubIcon className="h-12 w-12" />,
+        title: 'Git / GitHub',
+      },
+      {
+        Icon: <FigmaIcon className="h-12 w-12" />,
+        title: 'Figma',
+      },
+    ],
+  },
+]
 
 const Skill = ({ title, Icon, index }) => {
   return (
@@ -32,41 +104,57 @@ const Skill = ({ title, Icon, index }) => {
       custom={index}
       initial="initial"
       whileInView="animate"
-      viewport={{ once: true }}
-      className="max-w-42 border-[1px] border-dark py-2 px-3 xl:py-4 xl:px-4 flex flex-col justify-center items-center gap-2"
+      viewport={{ once: true, amount: 0.3 }}
+      className="
+        flex flex-col items-center justify-center gap-2
+        border border-dark py-5 w-32"
     >
       {Icon}
-      <p className="btn-base bg-[#BAE8E8] border-none text-dark min-w-28 text-sm">
+
+      <p
+        className="
+          flex items-center justify-center
+           text-center text-sm font-bold text-dark
+        "
+      >
         {title}
       </p>
     </motion.li>
-  );
-};
+  )
+}
 
-const skills = [
-  { Icon: <HtmlIcon className="w-16" />, title: "HTML" },
-  { Icon: <CssIcon className="w-16" />, title: "CSS" },
-  { Icon: <JavaScriptIcon className="w-16" />, title: "JavaScript" },
-  { Icon: <NextJsIcon className="w-16" />, title: "Next.js" },
-  { Icon: <TailwindIcon className="w-16" />, title: "Tailwind" },
-  { Icon: <PhpIcon className="w-16" />, title: "PHP" },
-  { Icon: <FigmaIcon className="w-16" />, title: "Figma" },
-  { Icon: <GithubIcon className="w-16" />, title: "GitHub" },
-];
+const SkillGroup = ({ category, skills, groupIndex }) => {
+  return (
+    <section className="grid gap-4 xl:grid-cols-[12rem_1fr] xl:gap-8">
+      <h3 className="text-blue text-center text-xl font-bold xl:text-2xl xl:text-left">
+        {category}
+      </h3>
+
+      <ul className="flex flex-wrap justify-center gap-2 xl:justify-start">
+        {skills.map((skill, skillIndex) => (
+          <Skill
+            key={skill.title}
+            {...skill}
+            index={groupIndex * 6 + skillIndex}
+          />
+        ))}
+      </ul>
+    </section>
+  )
+}
 
 const Skills = ({ className }) => {
   return (
-    <div className={`flex flex-col xl:flex-row max-w-5xl mx-auto ${className}`}>
-      <div className="xl:basis-1/4 xl:mr-20">
-        <AnimatedText text={"Skills"} />
-      </div>
-      <ul className="font-mont flex gap-4 flex-wrap justify-center items-center">
-        {skills.map((skill, index) => (
-          <Skill key={index} {...skill} index={index} />
-        ))}
-      </ul>
-    </div>
-  );
-};
+    <section className={`mx-auto max-w-5xl ${className}`}>
+      <AnimatedText text="Skills" />
 
-export default Skills;
+      <div className="mx-auto flex max-w-4xl flex-col gap-10">
+        {skillGroups.map((group, groupIndex) => (
+          <SkillGroup key={group.category} {...group} groupIndex={groupIndex} />
+        ))}
+      </div>
+    </section>
+  )
+}
+
+export default Skills
