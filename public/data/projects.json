@@ -47,7 +47,7 @@
     ]
   },
   {
-    "id": "Ari's Portfolio（ポートフォリオサイト)",
+    "id": "ari-portfolio",
     "title": "Ari's Portfolio",
     "titleNumber": "002",
     "siteType": "ポートフォリオ＆ブログサイト",
@@ -91,7 +91,7 @@
     ]
   },
   {
-    "id": "Ariホームページ制作（コーポレートサイト)",
+    "id": "ari-web",
     "title": "Ariホームページ制作",
     "titleNumber": "003",
     "siteType": "コーポレートサイト",
@@ -133,7 +133,7 @@
     ]
   },
   {
-    "id": "Saving-UP(為替レートを活用した貯金計画WEBアプリ)",
+    "id": "saving-up",
     "title": "Saving-UP",
     "titleNumber": "004",
     "siteType": "為替付き電卓WEBアプリ",
